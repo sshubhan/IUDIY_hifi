@@ -1,29 +1,43 @@
 import React from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { View, Text, Button, StyleSheet } from 'react-native';
 
-function LoginScreen({ navigation }) {
+const LoginScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text>Welcome</Text>
-      <TextInput placeholder="Email" style={styles.input} />
-      <TextInput placeholder="Password" style={styles.input} secureTextEntry />
-      <Button title="Sign In" onPress={() => navigation.navigate('Home')} />
-      <Button title="Sign Up" onPress={() => {}} />
+      <Text style={styles.title}>IUDIY</Text>
+      <Text style={styles.welcomeText}>Welcome</Text>
+      <Text style={styles.description}>
+        IUDIY will help you find a personalized contraceptive method and allow you to
+        track your daily menstrual symptoms.
+      </Text>
+      <Button title="Sign Up" onPress={() => {/* Sign Up logic */}} />
+      <Button title="Log In" onPress={() => navigation.navigate('Home')} />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    alignItems: 'center',
     justifyContent: 'center',
     padding: 20,
   },
-  input: {
-    borderWidth: 1,
-    borderColor: 'gray',
+  title: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: 'pink',
     marginBottom: 20,
-    padding: 10,
+  },
+  welcomeText: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  description: {
+    fontSize: 18,
+    textAlign: 'center',
+    marginBottom: 20,
   },
 });
 
