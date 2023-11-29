@@ -1,7 +1,7 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
 
-const PlaceholderScreen1 = ({ navigation }) => {
+const PlaceholderScreen2 = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>This is a placeholder screen.</Text>
@@ -12,8 +12,8 @@ const PlaceholderScreen1 = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     padding: 20,
   },
   text: {
@@ -21,4 +21,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PlaceholderScreen1;
+export default PlaceholderScreen2;
