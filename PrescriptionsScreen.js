@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-const PlaceholderScreen1 = ({ navigation }) => {
+const PrescriptionsScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>This is a placeholder screen.</Text>
@@ -16,9 +16,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 20,
   },
-  text: {
-    fontSize: 20,
+  header: {
+    fontSize: 40,
+    textAlignVertical: "top",
   },
 });
 
-export default PlaceholderScreen1;
+export default PrescriptionsScreen;

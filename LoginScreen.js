@@ -1,5 +1,12 @@
 import React from "react";
-import { View, Text, Button, StyleSheet, Image } from "react-native";
+import {
+  View,
+  Text,
+  Button,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+} from "react-native";
 
 const LoginScreen = ({ navigation }) => {
   return (
@@ -12,13 +19,18 @@ const LoginScreen = ({ navigation }) => {
         IUDIY will help you find a personalized contraceptive method and allow
         you to track your daily menstrual symptoms.
       </Text>
-      <Button
-        title="Sign Up"
-        onPress={() => {
-          /* Sign Up logic */
-        }}
-      />
-      <Button title="Log In" onPress={() => navigation.navigate("HomeTabs")} />
+      {/* <TouchableOpacity
+        style={styles.logButton}
+        onPress={() => navigation.navigate("Sign Up")}
+      >
+        <Text style={styles.buttonText}>Sign Up</Text>
+      </TouchableOpacity> */}
+      <TouchableOpacity
+        style={styles.logButton}
+        onPress={() => navigation.navigate("HomeTabs")}
+      >
+        <Text style={styles.buttonText}>Log In</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -57,6 +69,18 @@ const styles = StyleSheet.create({
     height: 150,
     marginRight: 15,
     borderRadius: 5,
+  },
+  logButton: {
+    backgroundColor: "#009473",
+    width: 300,
+    height: 50,
+    borderRadius: 25,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  buttonText: {
+    color: "white",
+    fontSize: 16,
   },
 });
 

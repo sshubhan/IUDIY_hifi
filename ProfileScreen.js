@@ -1,10 +1,14 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
 
-const PlaceholderScreen2 = ({ navigation }) => {
+const ProfileScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>This is a placeholder screen.</Text>
+      <Text style={styles.text}>Alex C.</Text>
+      <Image
+        source={require("../IUDIY_hifi/profPic.png")}
+        style={styles.profilePic}
+      />
     </View>
   );
 };
@@ -12,13 +16,18 @@ const PlaceholderScreen2 = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
     alignItems: "center",
     padding: 20,
   },
+  profilePic: {
+    width: 200,
+    height: 200,
+    borderRadius: 100,
+    margin: 15,
+  },
   text: {
-    fontSize: 20,
+    fontSize: 40,
   },
 });
 
-export default PlaceholderScreen2;
+export default ProfileScreen;
