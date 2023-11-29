@@ -83,7 +83,11 @@ function HomeTabs() {
         tabBarInactiveTintColor: "gray",
       })}
     >
-      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{ headerShown: false }}
+      />
       <Tab.Screen name="Symptom Log" component={SymptomCheckScreen} />
       <Tab.Screen name="Placeholder1" component={PlaceholderScreen1} />
       <Tab.Screen name="Placeholder2" component={PlaceholderScreen2} />

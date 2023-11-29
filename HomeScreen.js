@@ -1,53 +1,30 @@
-// screens/HomeScreen.js
-// import React from "react";
-// import { View, Text, Button, StyleSheet } from "react-native";
-
-// const HomeScreen = ({ navigation }) => {
-//   return (
-//     <View style={styles.container}>
-//       <Text style={styles.reminderText}>Take Yasmin in 34 minutes</Text>
-//       <Button
-//         title="Log Your Symptoms"
-//         // onPress={() => navigation.navigate("Log Your Symptoms")}
-//         onPress={() => navigation.navigate("Symptom Check")}
-//       />
-//     </View>
-//   );
-// };
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     alignItems: "center",
-//     justifyContent: "center",
-//     padding: 20,
-//   },
-//   reminderText: {
-//     fontSize: 20,
-//     color: "red",
-//     marginBottom: 20,
-//   },
-// });
-
-// export default HomeScreen;
-
 import React from "react";
-import { View, Text, Button, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  Dimensions,
+  Image,
+} from "react-native";
+const { width: windowWidth, height: windowHeight } = Dimensions.get("window");
 
 const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <View style={styles.circle}>
+      <View style={styles.header}>
+        {/* <Image style={styles.logo} source={require("./logo.png")} /> */}
+      </View>
+      <Text style={styles.welcomeText}>Welcome Alex!</Text>
+      <View style={styles.square}>
         <Text style={styles.reminderText}>Take Yasmin in 34 minutes</Text>
       </View>
-      <Button
-        title="Log Your Symptoms"
-<<<<<<< HEAD
-        onPress={() => navigation.navigate("Symptom Check")}
-=======
+      <TouchableOpacity
+        style={styles.logButton}
         onPress={() => navigation.navigate("Symptom Log")}
->>>>>>> ed40e58aafbd862a769d03c17bf7bde82f705dc1
-      />
+      >
+        <Text style={styles.buttonText}>Log Your Symptoms</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -59,10 +36,19 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     padding: 20,
   },
-  circle: {
-    width: 200,
-    height: 200,
-    borderRadius: 100, // half of the width and height to create a circle
+  logo: {
+    width: "50%",
+  },
+  welcomeText: {
+    fontSize: 30,
+    color: "black",
+    margin: 10,
+  },
+  square: {
+    width: "85%",
+    // height: "80%",
+    aspectRatio: 1,
+    borderRadius: 20, // Adjust the borderRadius for a rounded square
     backgroundColor: "purple",
     alignItems: "center",
     justifyContent: "center",
@@ -71,6 +57,20 @@ const styles = StyleSheet.create({
   reminderText: {
     fontSize: 20,
     color: "white",
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  logButton: {
+    backgroundColor: "#009473",
+    width: 300,
+    height: 50,
+    borderRadius: 25,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  buttonText: {
+    color: "white",
+    fontSize: 16,
   },
 });
 
