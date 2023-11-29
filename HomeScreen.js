@@ -42,11 +42,7 @@ const HomeScreen = ({ navigation }) => {
       </View>
       <Button
         title="Log Your Symptoms"
-<<<<<<< HEAD
-        onPress={() => navigation.navigate("Symptom Check")}
-=======
         onPress={() => navigation.navigate("Symptom Log")}
->>>>>>> ed40e58aafbd862a769d03c17bf7bde82f705dc1
       />
     </View>
   );

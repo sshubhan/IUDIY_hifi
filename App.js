@@ -51,8 +51,8 @@ import LoginScreen from "./LoginScreen";
 import HomeScreen from "./HomeScreen";
 import SymptomCheckScreen from "./SymptomCheckScreen";
 import ConfirmationScreen from "./ConfirmationScreen";
-import PlaceholderScreen1 from "./PlaceholderScreen1";
-import PlaceholderScreen2 from "./PlaceholderScreen2";
+import PrescriptionsScreen from "./PrescriptionsScreen";
+import ProfileScreen from "./ProfileScreen";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -68,12 +68,10 @@ function HomeTabs() {
             iconName = focused ? "ios-home" : "ios-home-outline";
           } else if (route.name === "Symptom Log") {
             iconName = focused ? "ios-list" : "ios-list-outline";
-          } else if (route.name === "Placeholder1") {
-            iconName = focused ? "ios-add-circle" : "ios-add-circle-outline";
-          } else if (route.name === "Placeholder2") {
-            iconName = focused
-              ? "ios-information-circle"
-              : "ios-information-circle-outline";
+          } else if (route.name === "Prescriptions") {
+            iconName = focused ? "medkit" : "medkit-outline";
+          } else if (route.name === "Profile") {
+            iconName = focused ? "person-circle" : "person-circle-outline";
           }
 
           // You can return any component that you like here!
@@ -85,8 +83,8 @@ function HomeTabs() {
     >
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Symptom Log" component={SymptomCheckScreen} />
-      <Tab.Screen name="Placeholder1" component={PlaceholderScreen1} />
-      <Tab.Screen name="Placeholder2" component={PlaceholderScreen2} />
+      <Tab.Screen name="Prescriptions" component={PrescriptionsScreen} />
+      <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
   );
 }
