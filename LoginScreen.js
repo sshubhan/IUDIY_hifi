@@ -1,10 +1,12 @@
 import React from "react";
-import { View, Text, Button, StyleSheet } from "react-native";
+import { View, Text, Button, StyleSheet, Image } from "react-native";
 
 const LoginScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>IUDIY</Text>
+      <View style={styles.header}>
+        <Image style={styles.logo} source={require("../IUDIY_hifi/logo.png")} />
+      </View>
       <Text style={styles.welcomeText}>Welcome</Text>
       <Text style={styles.description}>
         IUDIY will help you find a personalized contraceptive method and allow
@@ -27,12 +29,18 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     padding: 20,
+    backgroundColor: "white",
+  },
+  header: {
+    justifyContent: "center",
+    margin: 15,
   },
   title: {
-    fontSize: 30,
+    fontSize: 56,
     fontWeight: "bold",
-    color: "pink",
-    marginBottom: 20,
+    fontFamily: "",
+    color: "#009473",
+    marginBottom: 50,
   },
   welcomeText: {
     fontSize: 24,
@@ -43,6 +51,12 @@ const styles = StyleSheet.create({
     fontSize: 18,
     textAlign: "center",
     marginBottom: 20,
+  },
+  logo: {
+    width: 400,
+    height: 150,
+    marginRight: 15,
+    borderRadius: 5,
   },
 });
 
