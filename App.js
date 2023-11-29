@@ -33,7 +33,7 @@ export default function App() {
           component={HomeTabs}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name="SymptomCheck" component={SymptomCheckScreen} />
+        <Stack.Screen name="Log Your Symptoms" component={SymptomCheckScreen} />
         <Stack.Screen name="Confirmation" component={ConfirmationScreen} />
       </Stack.Navigator>
     </NavigationContainer>

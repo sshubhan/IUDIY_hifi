@@ -6,13 +6,14 @@ import {
   Button,
   StyleSheet,
   ScrollView,
+  TextInput,
 } from "react-native";
 
 const SymptomCheckScreen = ({ navigation }) => {
-  // This state will hold the selected symptoms
   const [selectedSymptoms, setSelectedSymptoms] = useState({});
+  const [customSymptoms, setCustomSymptoms] = useState([]);
+  const [customSymptom, setCustomSymptom] = useState("");
 
-  // Function to handle the toggling of symptoms
   const handleToggle = (symptom) => {
     setSelectedSymptoms((prevState) => ({
       ...prevState,
@@ -20,13 +21,26 @@ const SymptomCheckScreen = ({ navigation }) => {
     }));
   };
 
-  // Function to submit the selected symptoms
+  const handleCustomSymptomChange = (text) => {
+    setCustomSymptom(text);
+  };
+
+  const handleAddCustomSymptom = () => {
+    if (customSymptom.trim() !== "") {
+      setCustomSymptoms((prevCustomSymptoms) => [
+        ...prevCustomSymptoms,
+        customSymptom.trim(),
+      ]);
+      setCustomSymptom("");
+    }
+  };
+
   const handleSubmit = () => {
+    // Your existing code here
     navigation.navigate("Confirmation");
   };
 
-  // List of symptoms for the example
-  const symptoms = [
+  const defaultSymptoms = [
     "Migraines",
     "Heavy Spotting",
     "Slight Spotting",
@@ -39,8 +53,10 @@ const SymptomCheckScreen = ({ navigation }) => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.header}>Select Your Symptoms</Text>
-      {symptoms.map((symptom) => (
-        <View key={symptom} style={styles.symptomRow}>
+
+      {/* List of default symptoms */}
+      {defaultSymptoms.map((symptom, index) => (
+        <View key={index} style={styles.symptomRow}>
           <Text style={styles.symptomText}>{symptom}</Text>
           <Switch
             trackColor={{ false: "#767577", true: "#81b0ff" }}
@@ -51,6 +67,32 @@ const SymptomCheckScreen = ({ navigation }) => {
           />
         </View>
       ))}
+
+      {/* List of custom symptoms */}
+      {customSymptoms.map((symptom, index) => (
+        <View key={index + defaultSymptoms.length} style={styles.symptomRow}>
+          <Text style={styles.symptomText}>{symptom}</Text>
+          <Switch
+            trackColor={{ false: "#767577", true: "#81b0ff" }}
+            thumbColor={selectedSymptoms[symptom] ? "#f5dd4b" : "#f4f3f4"}
+            ios_backgroundColor="#3e3e3e"
+            onValueChange={() => handleToggle(symptom)}
+            value={!!selectedSymptoms[symptom]}
+          />
+        </View>
+      ))}
+
+      {/* Write Your Own section */}
+      <View style={styles.symptomRow}>
+        <TextInput
+          placeholder="Write Your Own"
+          style={styles.customSymptomInput}
+          onChangeText={handleCustomSymptomChange}
+          value={customSymptom}
+        />
+        <Button title="Add" onPress={handleAddCustomSymptom} />
+      </View>
+
       <View style={styles.buttonContainer}>
         <Button title="Continue" onPress={handleSubmit} />
       </View>
@@ -74,6 +116,10 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   symptomText: {
+    fontSize: 18,
+  },
+  customSymptomInput: {
+    flex: 1,
     fontSize: 18,
   },
   buttonContainer: {
