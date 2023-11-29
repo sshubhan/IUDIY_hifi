@@ -34,12 +34,12 @@ function HomeTabs() {
           // Return any component
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: 'tomato',
+        tabBarActiveTintColor: "#009473",
         tabBarInactiveTintColor: 'gray',
       })}
     >
       <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="SymptomCheck" component={SymptomCheckScreen} />
+      <Stack.Screen name="Log Your Symptoms" component={SymptomCheckScreen} />
       <Tab.Screen name="Placeholder1" component={PlaceholderScreen1} />
       <Tab.Screen name="Placeholder2" component={PlaceholderScreen2} />
     </Tab.Navigator>
