@@ -8,7 +8,8 @@ const HomeScreen = ({ navigation }) => {
       <Text style={styles.reminderText}>Take Yasmin in 34 minutes</Text>
       <Button
         title="Log Your Symptoms"
-        onPress={() => navigation.navigate("Log Your Symptoms")}
+        // onPress={() => navigation.navigate("Log Your Symptoms")}
+        onPress={() => navigation.navigate("Symptom Check")}
       />
     </View>
   );
