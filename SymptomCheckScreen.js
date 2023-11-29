@@ -1,5 +1,12 @@
-import React, { useState } from 'react';
-import { View, Text, Switch, Button, StyleSheet, ScrollView } from 'react-native';
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  Switch,
+  Button,
+  StyleSheet,
+  ScrollView,
+} from "react-native";
 
 const SymptomCheckScreen = ({ navigation }) => {
   // This state will hold the selected symptoms
@@ -15,18 +22,18 @@ const SymptomCheckScreen = ({ navigation }) => {
 
   // Function to submit the selected symptoms
   const handleSubmit = () => {
-    navigation.navigate('Confirmation');
+    navigation.navigate("Confirmation");
   };
 
   // List of symptoms for the example
   const symptoms = [
-    'Migraines',
-    'Heavy Spotting',
-    'Slight Spotting',
-    'Energetic',
-    'Lethargic',
-    'Nausea',
-    'Bloating',
+    "Migraines",
+    "Heavy Spotting",
+    "Slight Spotting",
+    "Energetic",
+    "Lethargic",
+    "Nausea",
+    "Bloating",
   ];
 
   return (
@@ -36,8 +43,8 @@ const SymptomCheckScreen = ({ navigation }) => {
         <View key={symptom} style={styles.symptomRow}>
           <Text style={styles.symptomText}>{symptom}</Text>
           <Switch
-            trackColor={{ false: '#767577', true: '#81b0ff' }}
-            thumbColor={selectedSymptoms[symptom] ? '#f5dd4b' : '#f4f3f4'}
+            trackColor={{ false: "#767577", true: "#81b0ff" }}
+            thumbColor={selectedSymptoms[symptom] ? "#f5dd4b" : "#f4f3f4"}
             ios_backgroundColor="#3e3e3e"
             onValueChange={() => handleToggle(symptom)}
             value={!!selectedSymptoms[symptom]}
@@ -57,13 +64,13 @@ const styles = StyleSheet.create({
   },
   header: {
     fontSize: 22,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 20,
   },
   symptomRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     marginBottom: 10,
   },
   symptomText: {

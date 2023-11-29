@@ -1,12 +1,15 @@
 // screens/HomeScreen.js
-import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import React from "react";
+import { View, Text, Button, StyleSheet } from "react-native";
 
 const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.reminderText}>Take Yasmin in 34 minutes</Text>
-      <Button title="Log Symptoms" onPress={() => navigation.navigate('SymptomCheck')} />
+      <Button
+        title="Log Symptoms"
+        onPress={() => navigation.navigate("SymptomCheck")}
+      />
     </View>
   );
 };
@@ -14,13 +17,13 @@ const HomeScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     padding: 20,
   },
   reminderText: {
     fontSize: 20,
-    color: 'red',
+    color: "red",
     marginBottom: 20,
   },
 });

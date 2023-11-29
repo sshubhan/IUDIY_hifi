@@ -1,10 +1,12 @@
-import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import React from "react";
+import { View, Text, Button, StyleSheet } from "react-native";
 
 const ConfirmationScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.confirmationText}>Your symptoms have been logged.</Text>
+      <Text style={styles.confirmationText}>
+        Your symptoms have been logged.
+      </Text>
       <Button
         title="Check earlier symptoms"
         onPress={() => {
@@ -18,8 +20,8 @@ const ConfirmationScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     padding: 20,
   },
   confirmationText: {

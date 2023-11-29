@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import React from "react";
+import { View, Text, Button, StyleSheet } from "react-native";
 
 const LoginScreen = ({ navigation }) => {
   return (
@@ -7,11 +7,16 @@ const LoginScreen = ({ navigation }) => {
       <Text style={styles.title}>IUDIY</Text>
       <Text style={styles.welcomeText}>Welcome</Text>
       <Text style={styles.description}>
-        IUDIY will help you find a personalized contraceptive method and allow you to
-        track your daily menstrual symptoms.
+        IUDIY will help you find a personalized contraceptive method and allow
+        you to track your daily menstrual symptoms.
       </Text>
-      <Button title="Sign Up" onPress={() => {/* Sign Up logic */}} />
-      <Button title="Log In" onPress={() => navigation.navigate('Home')} />
+      <Button
+        title="Sign Up"
+        onPress={() => {
+          /* Sign Up logic */
+        }}
+      />
+      <Button title="Log In" onPress={() => navigation.navigate("HomeTabs")} />
     </View>
   );
 };
@@ -19,24 +24,24 @@ const LoginScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     padding: 20,
   },
   title: {
     fontSize: 30,
-    fontWeight: 'bold',
-    color: 'pink',
+    fontWeight: "bold",
+    color: "pink",
     marginBottom: 20,
   },
   welcomeText: {
     fontSize: 24,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 10,
   },
   description: {
     fontSize: 18,
-    textAlign: 'center',
+    textAlign: "center",
     marginBottom: 20,
   },
 });
