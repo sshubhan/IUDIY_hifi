@@ -6,15 +6,36 @@ import LoginScreen from "./LoginScreen";
 import HomeScreen from "./HomeScreen";
 import SymptomCheckScreen from "./SymptomCheckScreen";
 import ConfirmationScreen from "./ConfirmationScreen";
+import Icon from "react-native-vector-icons/Fontisto";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 function HomeTabs() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ color, size }) => {
+          let iconName;
+
+          if (route.name === "Home") {
+            iconName = "home";
+          } else if (route.name === "Symptoms") {
+            iconName = "pills";
+          } // } else if (route.name === "Profile") {
+          //   iconName = "user";
+          // } else if (route.name === "Profile") {
+          //   iconName = "user";
+          // }
+
+          return <Icon name={iconName} color={"#009473"} />;
+        },
+      })}
+    >
       <Tab.Screen name="Home" component={HomeScreen} />
-      {/* Add more tabs as needed */}
+      <Tab.Screen name="Symptoms" component={SymptomCheckScreen} />
+      {/* <Tab.Screen name="Perscriptions" component={HomeScreen} />
+      <Tab.Screen name="Profile" component={HomeScreen} /> */}
     </Tab.Navigator>
   );
 }
