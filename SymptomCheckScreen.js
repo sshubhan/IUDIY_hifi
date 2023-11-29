@@ -8,6 +8,7 @@ import {
   ScrollView,
   TextInput,
 } from "react-native";
+import CheckBox from "react-native-check-box";
 
 const SymptomCheckScreen = ({ navigation }) => {
   const [selectedSymptoms, setSelectedSymptoms] = useState({});
@@ -58,12 +59,10 @@ const SymptomCheckScreen = ({ navigation }) => {
       {defaultSymptoms.map((symptom, index) => (
         <View key={index} style={styles.symptomRow}>
           <Text style={styles.symptomText}>{symptom}</Text>
-          <Switch
-            trackColor={{ false: "#767577", true: "#81b0ff" }}
-            thumbColor={selectedSymptoms[symptom] ? "#f5dd4b" : "#f4f3f4"}
-            ios_backgroundColor="#3e3e3e"
-            onValueChange={() => handleToggle(symptom)}
-            value={!!selectedSymptoms[symptom]}
+          <CheckBox
+            isChecked={!!selectedSymptoms[symptom]}
+            onClick={() => handleToggle(symptom)}
+            checkBoxColor="#009473"
           />
         </View>
       ))}
@@ -72,12 +71,10 @@ const SymptomCheckScreen = ({ navigation }) => {
       {customSymptoms.map((symptom, index) => (
         <View key={index + defaultSymptoms.length} style={styles.symptomRow}>
           <Text style={styles.symptomText}>{symptom}</Text>
-          <Switch
-            trackColor={{ false: "#767577", true: "#81b0ff" }}
-            thumbColor={selectedSymptoms[symptom] ? "#f5dd4b" : "#f4f3f4"}
-            ios_backgroundColor="#3e3e3e"
-            onValueChange={() => handleToggle(symptom)}
-            value={!!selectedSymptoms[symptom]}
+          <CheckBox
+            isChecked={!!selectedSymptoms[symptom]}
+            onClick={() => handleToggle(symptom)}
+            checkBoxColor="#009473"
           />
         </View>
       ))}
