@@ -66,7 +66,7 @@ function HomeTabs() {
 
           if (route.name === "Home") {
             iconName = focused ? "ios-home" : "ios-home-outline";
-          } else if (route.name === "Symptom Check") {
+          } else if (route.name === "Symptom Log") {
             iconName = focused ? "ios-list" : "ios-list-outline";
           } else if (route.name === "Placeholder1") {
             iconName = focused ? "ios-add-circle" : "ios-add-circle-outline";
@@ -84,8 +84,7 @@ function HomeTabs() {
       })}
     >
       <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Symptom Check" component={SymptomCheckScreen} />
-      {/* <Stack.Screen name="Confirmation" component={ConfirmationScreen} /> */}
+      <Tab.Screen name="Symptom Log" component={SymptomCheckScreen} />
       <Tab.Screen name="Placeholder1" component={PlaceholderScreen1} />
       <Tab.Screen name="Placeholder2" component={PlaceholderScreen2} />
     </Tab.Navigator>
