@@ -1,10 +1,19 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, Button, StyleSheet, TouchableOpacity } from "react-native";
 
 const PrescriptionsScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>This is a placeholder screen.</Text>
+      {/* Existing UI elements */}
+      <Text style={styles.title}>Your Prescriptions</Text>
+
+      {/* Button to get a new recommendation */}
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate("RecommendationPreferences")}
+      >
+        <Text style={styles.buttonText}>Get a New Recommendation</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -16,9 +25,20 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 20,
   },
-  header: {
-    fontSize: 40,
-    textAlignVertical: "top",
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 20,
+  },
+  button: {
+    backgroundColor: "#009473",
+    padding: 15,
+    borderRadius: 25,
+    marginBottom: 20,
+  },
+  buttonText: {
+    color: "white",
+    fontSize: 18,
   },
 });
 

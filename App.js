@@ -53,6 +53,9 @@ import SymptomCheckScreen from "./SymptomCheckScreen";
 import ConfirmationScreen from "./ConfirmationScreen";
 import PrescriptionsScreen from "./PrescriptionsScreen";
 import ProfileScreen from "./ProfileScreen";
+import RecommendationPreferencesScreen from "./RecommendationPreferencesScreen";
+import NewPrescriptionConfirmationScreen from "./NewPrescriptionConfirmationScreen";
+import CurrentRecommendationScreen from "./CurrentRecommendationScreen"; 
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -63,7 +66,6 @@ function HomeTabs() {
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
-
           if (route.name === "Home") {
             iconName = focused ? "ios-home" : "ios-home-outline";
           } else if (route.name === "Symptom Log") {
@@ -73,8 +75,6 @@ function HomeTabs() {
           } else if (route.name === "Profile") {
             iconName = focused ? "person-circle" : "person-circle-outline";
           }
-
-          // You can return any component that you like here!
           return <Ionicons name={iconName} size={size} color={color} />;
         },
         tabBarActiveTintColor: "#009473",
@@ -102,14 +102,26 @@ export default function App() {
           component={LoginScreen}
           options={{ headerShown: false }}
         />
-        {/* HomeTabs will be the main screen after login which includes the bottom tabs */}
         <Stack.Screen
           name="HomeTabs"
           component={HomeTabs}
           options={{ headerShown: false }}
         />
-        {/* No need to separately list screens that are part of the Tab Navigator */}
         <Stack.Screen name="Confirmation" component={ConfirmationScreen} />
+        <Stack.Screen
+          name="RecommendationPreferences"
+          component={RecommendationPreferencesScreen}
+        />
+        <Stack.Screen
+          name="NewPrescriptionConfirmation"
+          component={NewPrescriptionConfirmationScreen}
+        />
+        <Stack.Screen
+          name="CurrentRecommendation"
+          component={CurrentRecommendationScreen}
+          options={{ headerShown: false }}
+        />
+        {/* Add other screens as needed */}
       </Stack.Navigator>
     </NavigationContainer>
   );
