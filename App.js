@@ -46,7 +46,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 
-// Import screens
+// Import your screens
 import LoginScreen from "./LoginScreen";
 import HomeScreen from "./HomeScreen";
 import SymptomCheckScreen from "./SymptomCheckScreen";
@@ -55,7 +55,9 @@ import PrescriptionsScreen from "./PrescriptionsScreen";
 import ProfileScreen from "./ProfileScreen";
 import RecommendationPreferencesScreen from "./RecommendationPreferencesScreen";
 import NewPrescriptionConfirmationScreen from "./NewPrescriptionConfirmationScreen";
-import CurrentRecommendationScreen from "./CurrentRecommendationScreen"; 
+import CurrentRecommendationScreen from "./CurrentRecommendationScreen";
+import PharmacyMapScreen from "./PharmacyMapScreen";
+import PharmacyDetailScreen from "./PharmacyDetailScreen";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -71,9 +73,9 @@ function HomeTabs() {
           } else if (route.name === "Symptom Log") {
             iconName = focused ? "ios-list" : "ios-list-outline";
           } else if (route.name === "Prescriptions") {
-            iconName = focused ? "medkit" : "medkit-outline";
+            iconName = focused ? "ios-medkit" : "ios-medkit-outline";
           } else if (route.name === "Profile") {
-            iconName = focused ? "person-circle" : "person-circle-outline";
+            iconName = focused ? "ios-person" : "ios-person-outline";
           }
           return <Ionicons name={iconName} size={size} color={color} />;
         },
@@ -120,6 +122,16 @@ export default function App() {
           name="CurrentRecommendation"
           component={CurrentRecommendationScreen}
           options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="PharmacyMapScreen"
+          component={PharmacyMapScreen}
+          options={{ title: 'Pharmacy Locations' }} // Customize your options
+        />
+        <Stack.Screen
+          name="PharmacyDetailScreen"
+          component={PharmacyDetailScreen}
+          options={{ title: 'Pharmacy Details' }} // Customize your options
         />
         {/* Add other screens as needed */}
       </Stack.Navigator>
