@@ -1,6 +1,7 @@
 // PrescriptionsScreen.js
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import LinearGradient from "react-native-linear-gradient";
 
 const PrescriptionsScreen = ({ navigation }) => {
   return (
@@ -10,14 +11,16 @@ const PrescriptionsScreen = ({ navigation }) => {
       {/* Button to find prescription locations */}
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate('PharmacyMapScreen')}>
+        onPress={() => navigation.navigate("PharmacyMapScreen")}
+      >
         <Text style={styles.buttonText}>Where to Find Prescription</Text>
       </TouchableOpacity>
 
       {/* Button to get a new recommendation */}
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate("RecommendationPreferences")}>
+        onPress={() => navigation.navigate("RecommendationPreferences")}
+      >
         <Text style={styles.buttonText}>Get a New Recommendation</Text>
       </TouchableOpacity>
     </View>
@@ -41,7 +44,7 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 25,
     marginBottom: 20,
-    width: "80%",  // Adjust the width as needed
+    width: "80%", // Adjust the width as needed
   },
   buttonText: {
     color: "white",

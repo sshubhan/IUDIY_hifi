@@ -7,11 +7,16 @@ import {
   Dimensions,
   Image,
 } from "react-native";
+import LinearGradient from "react-native-linear-gradient";
+
 const { width: windowWidth, height: windowHeight } = Dimensions.get("window");
 
 const HomeScreen = ({ navigation }) => {
   return (
-    <View style={styles.container}>
+    <LinearGradient
+      colors={["#fff", "#f0f0f0"]} // Adjust gradient colors as needed
+      style={styles.container}
+    >
       <View style={styles.header}>
         {/* <Image style={styles.logo} source={require("./logo.png")} /> */}
       </View>
@@ -25,7 +30,7 @@ const HomeScreen = ({ navigation }) => {
       >
         <Text style={styles.buttonText}>Log Your Symptoms</Text>
       </TouchableOpacity>
-    </View>
+    </LinearGradient>
   );
 };
 
