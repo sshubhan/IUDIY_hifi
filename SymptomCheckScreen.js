@@ -8,6 +8,7 @@ import {
   TextInput,
 } from "react-native";
 import CheckBox from "react-native-check-box";
+import { LinearGradient } from "expo-linear-gradient";
 
 const SymptomCheckScreen = ({ navigation }) => {
   const [selectedSymptoms, setSelectedSymptoms] = useState({});
@@ -51,69 +52,78 @@ const SymptomCheckScreen = ({ navigation }) => {
   ];
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.header}>Select Your Symptoms</Text>
+    <LinearGradient
+      colors={["#DCD0FF", "#FFFFFF"]} // You can adjust the gradient colors as needed
+      style={[styles.container, styles.linearGradientStyle]}
+    >
+      <ScrollView contentContainerStyle={styles.container}>
+        <Text style={styles.header}>Select Your Symptoms</Text>
 
-      {/* List of default symptoms */}
-      {defaultSymptoms.map((symptom, index) => (
-        <View key={index} style={styles.symptomContainer}>
-          <View style={styles.symptomRow}>
-            <Text style={styles.symptomText}>{symptom}</Text>
-            <CheckBox
-              isChecked={!!selectedSymptoms[symptom]}
-              onClick={() => handleToggle(symptom)}
-              checkBoxColor="#009473"
-            />
+        {/* List of default symptoms */}
+        {defaultSymptoms.map((symptom, index) => (
+          <View key={index} style={styles.symptomContainer}>
+            <View style={styles.symptomRow}>
+              <Text style={styles.symptomText}>{symptom}</Text>
+              <CheckBox
+                isChecked={!!selectedSymptoms[symptom]}
+                onClick={() => handleToggle(symptom)}
+                checkBoxColor="#009473"
+              />
+            </View>
+            {index < defaultSymptoms.length - 1 || customSymptoms.length > 0 ? (
+              <View style={styles.separator} />
+            ) : null}
           </View>
-          {index < defaultSymptoms.length - 1 || customSymptoms.length > 0 ? (
-            <View style={styles.separator} />
-          ) : null}
-        </View>
-      ))}
+        ))}
 
-      {/* List of custom symptoms */}
-      {customSymptoms.map((symptom, index) => (
-        <View
-          key={index + defaultSymptoms.length}
-          style={styles.symptomContainer}
-        >
-          <View style={styles.symptomRow}>
-            <Text style={styles.symptomText}>{symptom}</Text>
-            <CheckBox
-              isChecked={!!selectedSymptoms[symptom]}
-              onClick={() => handleToggle(symptom)}
-              checkBoxColor="#009473"
-            />
+        {/* List of custom symptoms */}
+        {customSymptoms.map((symptom, index) => (
+          <View
+            key={index + defaultSymptoms.length}
+            style={styles.symptomContainer}
+          >
+            <View style={styles.symptomRow}>
+              <Text style={styles.symptomText}>{symptom}</Text>
+              <CheckBox
+                isChecked={!!selectedSymptoms[symptom]}
+                onClick={() => handleToggle(symptom)}
+                checkBoxColor="#009473"
+              />
+            </View>
+            {index < customSymptoms.length - 1 && (
+              <View style={styles.separator} />
+            )}
           </View>
-          {index < customSymptoms.length - 1 && (
-            <View style={styles.separator} />
-          )}
-        </View>
-      ))}
+        ))}
 
-      {/* Write Your Own section */}
-      <View style={styles.symptomContainer}>
-        <View style={styles.symptomRow}>
-          <TextInput
-            placeholder="Write Your Own"
-            style={styles.customSymptomInput}
-            onChangeText={handleCustomSymptomChange}
-            value={customSymptom}
-          />
-          <Button title="Add" onPress={handleAddCustomSymptom} />
+        {/* Write Your Own section */}
+        <View style={styles.symptomContainer}>
+          <View style={styles.symptomRow}>
+            <TextInput
+              placeholder="Write Your Own"
+              style={styles.customSymptomInput}
+              onChangeText={handleCustomSymptomChange}
+              value={customSymptom}
+            />
+            <Button title="Add" onPress={handleAddCustomSymptom} />
+          </View>
         </View>
-      </View>
 
-      <View style={styles.buttonContainer}>
-        <Button title="Continue" onPress={handleSubmit} />
-      </View>
-    </ScrollView>
+        <View style={styles.buttonContainer}>
+          <Button title="Continue" onPress={handleSubmit} />
+        </View>
+      </ScrollView>
+    </LinearGradient>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+  },
+  linearGradientStyle: {
     padding: 20,
+    flex: 1,
   },
   header: {
     fontSize: 28,

@@ -111,7 +111,7 @@ const HomeScreen = ({ navigation }) => {
       style={styles.container}
     >
       <View style={styles.header}>
-        {/* <Image style={styles.logo} source={require("./logo.png")} /> */}
+        <Image style={styles.logo} source={require("../IUDIY_hifi/logo.png")} />
       </View>
       <Text style={styles.welcomeText}>Welcome Alex!</Text>
       <View style={styles.square}>
@@ -176,8 +176,8 @@ const styles = StyleSheet.create({
     margin: 15,
   },
   logo: {
-    width: 400,
-    height: 150,
+    width: windowWidth * 0.87,
+    height: windowHeight * 0.17,
     marginRight: 15,
     borderRadius: 5,
   },

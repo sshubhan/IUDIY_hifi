@@ -126,12 +126,12 @@ export default function App() {
         <Stack.Screen
           name="PharmacyMapScreen"
           component={PharmacyMapScreen}
-          options={{ title: 'Pharmacy Locations' }} // Customize your options
+          options={{ title: "Pharmacy Locations" }} // Customize your options
         />
         <Stack.Screen
           name="PharmacyDetailScreen"
           component={PharmacyDetailScreen}
-          options={{ title: 'Pharmacy Details' }} // Customize your options
+          options={{ title: "Pharmacy Details" }} // Customize your options
         />
         {/* Add other screens as needed */}
       </Stack.Navigator>
