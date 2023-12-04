@@ -6,14 +6,19 @@ const PrescriptionsScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Your Prescriptions</Text>
-      
-      {/* Other components for prescriptions can be added here */}
-      
+
       {/* Button to find prescription locations */}
       <TouchableOpacity
-        style={styles.findLocationButton}
+        style={styles.button}
         onPress={() => navigation.navigate('PharmacyMapScreen')}>
         <Text style={styles.buttonText}>Where to Find Prescription</Text>
+      </TouchableOpacity>
+
+      {/* Button to get a new recommendation */}
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate("RecommendationPreferences")}>
+        <Text style={styles.buttonText}>Get a New Recommendation</Text>
       </TouchableOpacity>
     </View>
   );
@@ -25,25 +30,24 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     padding: 20,
-    backgroundColor: "white", // Adjust the background color as needed
   },
   title: {
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 20,
   },
-  findLocationButton: {
-    backgroundColor: "#009473", // Adjust the button color as needed
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-    borderRadius: 5,
-    marginTop: 20,
+  button: {
+    backgroundColor: "#009473",
+    padding: 15,
+    borderRadius: 25,
+    marginBottom: 20,
+    width: "80%",  // Adjust the width as needed
   },
   buttonText: {
     color: "white",
-    fontSize: 16,
+    fontSize: 18,
+    textAlign: "center", // Ensure the text is centered
   },
-  // Add other styles as needed
 });
 
 export default PrescriptionsScreen;

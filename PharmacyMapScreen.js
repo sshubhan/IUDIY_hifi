@@ -18,7 +18,7 @@ const PharmacyMapScreen = ({ navigation }) => {
         style={styles.map}
         initialRegion={{
           latitude: 37.3541, // Rough center of the South Bay area
-          longitude: -121.9552,
+          longitude: -122.0000,
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}>
