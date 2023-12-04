@@ -45,7 +45,7 @@ const SymptomCheckScreen = ({ navigation }) => {
     "Migraines",
     "Heavy Spotting",
     "Slight Spotting",
-    "Energetic",
+    // "Energetic",
     "Lethargic",
     "Nausea",
     "Bloating",
@@ -56,8 +56,11 @@ const SymptomCheckScreen = ({ navigation }) => {
       colors={["#DCD0FF", "#FFFFFF"]} // You can adjust the gradient colors as needed
       style={[styles.container, styles.linearGradientStyle]}
     >
-      <ScrollView contentContainerStyle={styles.container}>
+      <View style={styles.headerContainer}>
         <Text style={styles.header}>Select Your Symptoms</Text>
+      </View>
+      <ScrollView contentContainerStyle={styles.container}>
+        {/* <Text style={styles.header}>Select Your Symptoms</Text> */}
 
         {/* List of default symptoms */}
         {defaultSymptoms.map((symptom, index) => (
@@ -125,13 +128,22 @@ const styles = StyleSheet.create({
     padding: 20,
     flex: 1,
   },
+  headerContainer: {
+    // backgroundColor: "white",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 30,
+    borderBottomWidth: 0,
+    borderBottomColor: "#ccc", // Add a border to separate header from content
+    paddingTop: 20,
+  },
   header: {
     fontSize: 28,
     fontWeight: "bold",
-    marginBottom: 20,
   },
   symptomContainer: {
-    marginBottom: 25,
+    marginBottom: 10,
+    marginTop: 10,
   },
   symptomRow: {
     flexDirection: "row",
@@ -149,7 +161,7 @@ const styles = StyleSheet.create({
   },
   customSymptomInput: {
     flex: 1,
-    fontSize: 18,
+    fontSize: 22,
   },
   buttonContainer: {
     marginTop: 20,
