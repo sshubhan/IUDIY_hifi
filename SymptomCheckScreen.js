@@ -6,6 +6,7 @@ import {
   StyleSheet,
   ScrollView,
   TextInput,
+  TouchableOpacity,
 } from "react-native";
 import CheckBox from "react-native-check-box";
 import { LinearGradient } from "expo-linear-gradient";
@@ -109,9 +110,12 @@ const SymptomCheckScreen = ({ navigation }) => {
           </View>
         </View>
 
-        <View style={styles.buttonContainer}>
+        <TouchableOpacity style={styles.logButton} onPress={handleSubmit}>
+          <Text style={styles.buttonText}>Submit</Text>
+        </TouchableOpacity>
+        {/* <View style={styles.buttonContainer}>
           <Button title="Continue" onPress={handleSubmit} />
-        </View>
+        </View> */}
       </ScrollView>
     </LinearGradient>
   );
@@ -153,6 +157,19 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     marginTop: 20,
+  },
+  logButton: {
+    backgroundColor: "#009473",
+    width: 300,
+    height: 50,
+    borderRadius: 25,
+    alignItems: "center",
+    justifyContent: "center",
+    marginLeft: 40,
+  },
+  buttonText: {
+    color: "white",
+    fontSize: 18,
   },
 });
 
