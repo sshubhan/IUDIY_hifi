@@ -10,15 +10,17 @@ const PharmacyDetailScreen = ({ route, navigation }) => {
     <View style={styles.container}>
       <TouchableOpacity
         style={styles.backButton}
-        onPress={() => navigation.goBack()}>
+        onPress={() => navigation.goBack()}
+      >
         <Ionicons name="arrow-back" size={25} color="black" />
       </TouchableOpacity>
-      
-      <Text style={styles.header}>PHARMACY INFORMATION</Text>
-      <Text style={styles.detailText}>{pharmacy.title}</Text>
-      <Text style={styles.detailText}>Latitude: {pharmacy.latitude}</Text>
-      <Text style={styles.detailText}>Longitude: {pharmacy.longitude}</Text>
-      <Text style={styles.detailText}>Slynd found in this location.</Text>
+      <View style={styles.square}>
+        <Text style={styles.header}>PHARMACY INFORMATION</Text>
+        <Text style={styles.detailText}>Name: {pharmacy.title}</Text>
+        <Text style={styles.detailText}>Latitude: {pharmacy.latitude}</Text>
+        <Text style={styles.detailText}>Longitude: {pharmacy.longitude}</Text>
+        <Text style={styles.detailText}>Slynd found in this location.</Text>
+      </View>
     </View>
   );
 };
@@ -26,21 +28,32 @@ const PharmacyDetailScreen = ({ route, navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     padding: 20,
+  },
+  square: {
+    width: "85%",
+    aspectRatio: 1,
+    borderRadius: 70, // Adjust the borderRadius for a rounded square
+    backgroundColor: "purple",
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 20,
   },
   header: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 20,
+    color: "white",
   },
   detailText: {
     fontSize: 16,
     marginBottom: 5,
+    color: "white",
   },
   backButton: {
-    position: 'absolute',
+    position: "absolute",
     top: 40, // Adjust as needed
     left: 10, // Adjust as needed
     padding: 10,

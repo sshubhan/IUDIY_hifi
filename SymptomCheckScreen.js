@@ -56,37 +56,52 @@ const SymptomCheckScreen = ({ navigation }) => {
 
       {/* List of default symptoms */}
       {defaultSymptoms.map((symptom, index) => (
-        <View key={index} style={styles.symptomRow}>
-          <Text style={styles.symptomText}>{symptom}</Text>
-          <CheckBox
-            isChecked={!!selectedSymptoms[symptom]}
-            onClick={() => handleToggle(symptom)}
-            checkBoxColor="#009473"
-          />
+        <View key={index} style={styles.symptomContainer}>
+          <View style={styles.symptomRow}>
+            <Text style={styles.symptomText}>{symptom}</Text>
+            <CheckBox
+              isChecked={!!selectedSymptoms[symptom]}
+              onClick={() => handleToggle(symptom)}
+              checkBoxColor="#009473"
+            />
+          </View>
+          {index < defaultSymptoms.length - 1 || customSymptoms.length > 0 ? (
+            <View style={styles.separator} />
+          ) : null}
         </View>
       ))}
 
       {/* List of custom symptoms */}
       {customSymptoms.map((symptom, index) => (
-        <View key={index + defaultSymptoms.length} style={styles.symptomRow}>
-          <Text style={styles.symptomText}>{symptom}</Text>
-          <CheckBox
-            isChecked={!!selectedSymptoms[symptom]}
-            onClick={() => handleToggle(symptom)}
-            checkBoxColor="#009473"
-          />
+        <View
+          key={index + defaultSymptoms.length}
+          style={styles.symptomContainer}
+        >
+          <View style={styles.symptomRow}>
+            <Text style={styles.symptomText}>{symptom}</Text>
+            <CheckBox
+              isChecked={!!selectedSymptoms[symptom]}
+              onClick={() => handleToggle(symptom)}
+              checkBoxColor="#009473"
+            />
+          </View>
+          {index < customSymptoms.length - 1 && (
+            <View style={styles.separator} />
+          )}
         </View>
       ))}
 
       {/* Write Your Own section */}
-      <View style={styles.symptomRow}>
-        <TextInput
-          placeholder="Write Your Own"
-          style={styles.customSymptomInput}
-          onChangeText={handleCustomSymptomChange}
-          value={customSymptom}
-        />
-        <Button title="Add" onPress={handleAddCustomSymptom} />
+      <View style={styles.symptomContainer}>
+        <View style={styles.symptomRow}>
+          <TextInput
+            placeholder="Write Your Own"
+            style={styles.customSymptomInput}
+            onChangeText={handleCustomSymptomChange}
+            value={customSymptom}
+          />
+          <Button title="Add" onPress={handleAddCustomSymptom} />
+        </View>
       </View>
 
       <View style={styles.buttonContainer}>
@@ -105,11 +120,19 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 20,
   },
+  symptomContainer: {
+    marginBottom: 25,
+  },
   symptomRow: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: 25,
+    marginBottom: 10,
+  },
+  separator: {
+    borderBottomWidth: 1,
+    borderBottomColor: "#ccc",
+    marginTop: 10,
   },
   symptomText: {
     fontSize: 22,
