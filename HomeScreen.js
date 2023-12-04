@@ -13,7 +13,7 @@ const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        {/* <Image style={styles.logo} source={require("./logo.png")} /> */}
+        <Image style={styles.logo} source={require("../IUDIY_hifi/logo.png")} />
       </View>
       <Text style={styles.welcomeText}>Welcome Alex!</Text>
       <View style={styles.square}>
@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     padding: 20,
+    backgroundColor: "white",
   },
   logo: {
     width: "50%",
@@ -48,14 +49,14 @@ const styles = StyleSheet.create({
     width: "85%",
     // height: "80%",
     aspectRatio: 1,
-    borderRadius: 20, // Adjust the borderRadius for a rounded square
+    borderRadius: 170, // Adjust the borderRadius for a rounded square
     backgroundColor: "purple",
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 20,
   },
   reminderText: {
-    fontSize: 20,
+    fontSize: 30,
     color: "white",
     fontWeight: "bold",
     textAlign: "center",
@@ -71,6 +72,16 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "white",
     fontSize: 16,
+  },
+  header: {
+    justifyContent: "center",
+    margin: 15,
+  },
+  logo: {
+    width: 400,
+    height: 150,
+    marginRight: 15,
+    borderRadius: 5,
   },
 });
 
