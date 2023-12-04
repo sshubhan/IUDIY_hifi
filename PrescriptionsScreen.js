@@ -1,28 +1,34 @@
 // PrescriptionsScreen.js
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
 
 const PrescriptionsScreen = ({ navigation }) => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Your Prescriptions</Text>
+    <LinearGradient
+      colors={["#DCD0FF", "#FFFFFF"]} // You can adjust the gradient colors as needed
+      style={[styles.container, styles.linearGradientStyle]}
+    >
+      <View style={styles.container}>
+        <Text style={styles.title}>Your Prescriptions</Text>
 
-      {/* Button to find prescription locations */}
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.navigate("PharmacyMapScreen")}
-      >
-        <Text style={styles.buttonText}>Where to Find Prescription</Text>
-      </TouchableOpacity>
+        {/* Button to find prescription locations */}
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate("PharmacyMapScreen")}
+        >
+          <Text style={styles.buttonText}>Where to Find Prescription</Text>
+        </TouchableOpacity>
 
-      {/* Button to get a new recommendation */}
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.navigate("RecommendationPreferences")}
-      >
-        <Text style={styles.buttonText}>Get a New Recommendation</Text>
-      </TouchableOpacity>
-    </View>
+        {/* Button to get a new recommendation */}
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate("RecommendationPreferences")}
+        >
+          <Text style={styles.buttonText}>Get a New Recommendation</Text>
+        </TouchableOpacity>
+      </View>
+    </LinearGradient>
   );
 };
 

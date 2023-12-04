@@ -1,19 +1,25 @@
 import React from "react";
 import { View, Text, Button, StyleSheet } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
 
 const ConfirmationScreen = ({ navigation }) => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.confirmationText}>
-        Your symptoms have been logged.
-      </Text>
-      <Button
-        title="Check earlier symptoms"
-        onPress={() => {
-          // Here you can navigate to a screen where the user can view their symptom history
-        }}
-      />
-    </View>
+    <LinearGradient
+      colors={["#DCD0FF", "#FFFFFF"]} // You can adjust the gradient colors as needed
+      style={[styles.container, styles.linearGradientStyle]}
+    >
+      <View style={styles.container}>
+        <Text style={styles.confirmationText}>
+          Your symptoms have been logged.
+        </Text>
+        <Button
+          title="Check earlier symptoms"
+          onPress={() => {
+            // Here you can navigate to a screen where the user can view their symptom history
+          }}
+        />
+      </View>
+    </LinearGradient>
   );
 };
 
