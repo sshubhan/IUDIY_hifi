@@ -22,7 +22,7 @@ const HomeScreen = ({ navigation }) => {
         <Image style={styles.logo} source={require("../IUDIY_hifi/logo.png")} />
       </View>
       <Text style={styles.welcomeText}>Welcome Alex!</Text>
-      <View style={styles.square}>
+      <View style={styles.circle}>
         <Text style={styles.reminderText}>Take Yasmin in 34 minutes</Text>
       </View>
       <TouchableOpacity
@@ -50,9 +50,10 @@ const styles = StyleSheet.create({
     fontSize: 30,
     color: "black", // #6E0198
     margin: 10,
-    fontWeight: "bold",
+    // fontWeight: "bold",
+    fontFamily: "Inter-Light",
   },
-  square: {
+  circle: {
     width: "85%",
     // height: "80%",
     aspectRatio: 1,
@@ -68,7 +69,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     // fontFamily: "sans-serif",
-    fontFamily: "Inter",
+    fontFamily: "Inter-Light",
   },
   logButton: {
     backgroundColor: "#009473",
@@ -81,6 +82,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "white",
     fontSize: 16,
+    fontFamily: "Inter-Light",
   },
   header: {
     justifyContent: "center",

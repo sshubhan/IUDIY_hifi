@@ -101,7 +101,8 @@ const SymptomCheckScreen = ({ navigation }) => {
               )}
             </View>
           ))}
-          {customSymptoms.length - 1 && <View style={styles.separator} />}
+          {customSymptoms.length >= 0 && <View style={styles.separator} />}
+
           {/* Write Your Own section */}
           <View style={styles.symptomContainer}>
             <View style={styles.symptomRow}>
@@ -158,7 +159,8 @@ const styles = StyleSheet.create({
   },
   header: {
     fontSize: 28,
-    fontWeight: "bold",
+    // fontWeight: "bold",
+    fontFamily: "Inter-Light",
   },
   symptomContainer: {
     // marginBottom: 10,
@@ -178,10 +180,12 @@ const styles = StyleSheet.create({
   },
   symptomText: {
     fontSize: 20,
+    fontFamily: "Inter-Regular",
   },
   customSymptomInput: {
     flex: 1,
-    fontSize: 22,
+    fontSize: 20,
+    fontFamily: "Inter-Regular",
   },
   buttonContainer: {
     marginTop: 20,
@@ -196,17 +200,20 @@ const styles = StyleSheet.create({
   },
   logButton: {
     backgroundColor: "#009473",
-    width: "50%", // Adjusted width
+    width: "50%",
     height: 50,
     borderRadius: 25,
     alignItems: "center",
     justifyContent: "center",
-    marginLeft: "25%", // Adjusted margin
+    marginLeft: "25%",
+    fontFamily: "Inter-Light",
+
     // marginBottom: 300,
   },
   buttonText: {
     color: "white",
     fontSize: 18,
+    fontFamily: "Inter-Light",
   },
 });
 

@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import { AppLoading } from "expo";
-import * as Font from "expo-font";
+import { Font } from "expo-font";
 // import "@fontsource/inter";
 
 // Import your screens
@@ -20,16 +20,43 @@ import CurrentRecommendationScreen from "./CurrentRecommendationScreen";
 import PharmacyMapScreen from "./PharmacyMapScreen";
 import PharmacyDetailScreen from "./PharmacyDetailScreen";
 
-// import { useCallback } from "react";
-// import { useFonts } from "expo-font";
-// import * as SplashScreen from "expo-splash-screen";
+import { useCallback } from "react";
+import { useFonts } from "expo-font";
+import * as SplashScreen from "expo-splash-screen";
 
 // SplashScreen.preventAutoHideAsync();
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
+function SymptomLogStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="SymptomCheck"
+        component={SymptomCheckScreen}
+        options={{ headerShown: false, headerBackVisible: true }}
+      />
+      <Stack.Screen
+        name="Confirmation"
+        component={ConfirmationScreen}
+        options={{ headerShown: false, headerBackVisible: true }}
+      />
+      <Stack.Screen
+        name="RecommendationPreferences"
+        component={RecommendationPreferencesScreen}
+      />
+      <Stack.Screen
+        name="NewPrescriptionConfirmation"
+        component={NewPrescriptionConfirmationScreen}
+      />
+      {/* Add other screens related to the "Symptom Log" here */}
+    </Stack.Navigator>
+  );
+}
+
 function HomeTabs() {
+  const symptomLogStackName = SymptomLogStack();
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -57,53 +84,46 @@ function HomeTabs() {
       />
       <Tab.Screen
         name="Symptom Log"
-        component={SymptomCheckScreen}
+        component={SymptomLogStack}
+        listeners={({ navigation }) => ({
+          tabPress: (e) => {
+            e.preventDefault();
+            navigation.navigate("Symptom Log", { screen: "SymptomCheck" });
+          },
+        })}
         options={{ headerShown: false }}
       />
-      <Tab.Screen name="Prescriptions" component={PrescriptionsScreen} />
+      <Tab.Screen
+        name="Prescriptions"
+        component={PrescriptionsScreen}
+        options={{ headerShown: false }}
+      />
       <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
   );
 }
 
 export default function App() {
-  // const [fontsLoaded] = useFonts({
-  //   "Inter-Black": require("./assets/fonts/Inter-Black.ttf"),
-  // });
+  const [fontsLoaded] = useFonts({
+    "Inter-Black": require("./assets/fonts/Inter-Black.ttf"),
+    "Inter-Regular": require("./assets/fonts/Inter-Regular.ttf"),
+    "Inter-Thin": require("./assets/fonts/Inter-Thin.ttf"),
+    "Inter-Bold": require("./assets/fonts/Inter-Bold.ttf"),
+    "Inter-SemiBold": require("./assets/fonts/Inter-Bold.ttf"),
+    "Inter-Light": require("./assets/fonts/Inter-Bold.ttf"),
+    "Inter-Medium": require("./assets/fonts/Inter-Bold.ttf"),
+  });
 
-  // const onLayoutRootView = useCallback(async () => {
-  //   if (fontsLoaded) {
-  //     await SplashScreen.hideAsync();
-  //   }
-  // }, [fontsLoaded]);
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
 
-  // if (!fontsLoaded) {
-  //   return null;
-  // }
+  if (!fontsLoaded) {
+    return null;
+  }
 
-  // const [dataLoaded, setDataLoaded] = useState(false);
-
-  // const loadFonts = async () => {
-  //   try {
-  //     await Font.loadAsync({
-  //       "Inter-Black": require("./assets/fonts/Inter-Black.ttf"),
-  //     });
-
-  //     setDataLoaded(true);
-  //   } catch (error) {
-  //     console.error("Error loading fonts:", error);
-  //   }
-  // };
-
-  // if (!dataLoaded) {
-  //   return (
-  //     <AppLoading
-  //       startAsync={loadFonts}
-  //       onFinish={() => setDataLoaded(true)}
-  //       onError={console.warn} // Handle errors during font loading
-  //     />
-  //   );
-  // }
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -121,6 +141,7 @@ export default function App() {
         <Stack.Screen
           name="RecommendationPreferences"
           component={RecommendationPreferencesScreen}
+          // options={{ headerShown: false }}
         />
         <Stack.Screen
           name="NewPrescriptionConfirmation"

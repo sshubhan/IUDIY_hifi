@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 20,
+    fontFamily: "Inter-Light",
   },
   button: {
     backgroundColor: "#009473",
