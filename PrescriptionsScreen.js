@@ -27,6 +27,14 @@ const PrescriptionsScreen = ({ navigation }) => {
         >
           <Text style={styles.buttonText}>Get a New Recommendation</Text>
         </TouchableOpacity>
+
+        {/* Button to get your current recommendation */}
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate("CurrentRecommendationScreen")}
+        >
+          <Text style={styles.buttonText}>Current Prescription</Text>
+        </TouchableOpacity>
       </View>
     </LinearGradient>
   );
