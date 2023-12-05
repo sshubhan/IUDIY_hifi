@@ -14,10 +14,17 @@ const PrescriptionsScreen = ({ navigation }) => {
         <Text style={styles.buttonText}>Where to Find Prescription</Text>
       </TouchableOpacity>
 
+      {/* Button to show current prescription details */}
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate('CurrentRecommendationScreen')}>
+        <Text style={styles.buttonText}>Current Recommendation</Text>
+      </TouchableOpacity>
+
       {/* Button to get a new recommendation */}
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate("RecommendationPreferences")}>
+        onPress={() => navigation.navigate('RecommendationPreferences')}>
         <Text style={styles.buttonText}>Get a New Recommendation</Text>
       </TouchableOpacity>
     </View>
@@ -41,12 +48,12 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 25,
     marginBottom: 20,
-    width: "80%",  // Adjust the width as needed
+    width: "80%", // Adjust the width as needed
+    alignItems: "center",
   },
   buttonText: {
     color: "white",
     fontSize: 18,
-    textAlign: "center", // Ensure the text is centered
   },
 });
 
