@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
-import { AppLoading } from "expo";
-import { Font } from "expo-font";
-// import "@fontsource/inter";
+import { useFonts } from "expo-font";
+import * as SplashScreen from "expo-splash-screen";
+
+// Import the PrescriptionProvider
+import { PrescriptionProvider } from "./PrescriptionContext"; // Adjust this path as needed
 
 // Import your screens
 import LoginScreen from "./LoginScreen";
@@ -19,12 +21,6 @@ import NewPrescriptionConfirmationScreen from "./NewPrescriptionConfirmationScre
 import CurrentRecommendationScreen from "./CurrentRecommendationScreen";
 import PharmacyMapScreen from "./PharmacyMapScreen";
 import PharmacyDetailScreen from "./PharmacyDetailScreen";
-
-import { useCallback } from "react";
-import { useFonts } from "expo-font";
-import * as SplashScreen from "expo-splash-screen";
-
-// SplashScreen.preventAutoHideAsync();
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -125,44 +121,46 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Login"
-          component={LoginScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="HomeTabs"
-          component={HomeTabs}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen name="Confirmation" component={ConfirmationScreen} />
-        <Stack.Screen
-          name="RecommendationPreferences"
-          component={RecommendationPreferencesScreen}
-          // options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="NewPrescriptionConfirmation"
-          component={NewPrescriptionConfirmationScreen}
-        />
-        <Stack.Screen
-          name="CurrentRecommendation"
-          component={CurrentRecommendationScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="PharmacyMapScreen"
-          component={PharmacyMapScreen}
-          options={{ title: "Pharmacy Locations" }} // Customize your options
-        />
-        <Stack.Screen
-          name="PharmacyDetailScreen"
-          component={PharmacyDetailScreen}
-          options={{ title: "Pharmacy Details" }} // Customize your options
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <PrescriptionProvider>
+      <NavigationContainer onLayout={onLayoutRootView}>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Login"
+            component={LoginScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="HomeTabs"
+            component={HomeTabs}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen name="Confirmation" component={ConfirmationScreen} />
+          <Stack.Screen
+            name="RecommendationPreferences"
+            component={RecommendationPreferencesScreen}
+          />
+          <Stack.Screen
+            name="NewPrescriptionConfirmation"
+            component={NewPrescriptionConfirmationScreen}
+          />
+          <Stack.Screen
+            name="CurrentRecommendation"
+            component={CurrentRecommendationScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="PharmacyMapScreen"
+            component={PharmacyMapScreen}
+            options={{ title: "Pharmacy Locations" }}
+          />
+          <Stack.Screen
+            name="PharmacyDetailScreen"
+            component={PharmacyDetailScreen}
+            options={{ title: "Pharmacy Details" }}
+          />
+          {/* Add other screens as needed */}
+        </Stack.Navigator>
+      </NavigationContainer>
+    </PrescriptionProvider>
   );
 }
