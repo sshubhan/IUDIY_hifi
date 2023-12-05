@@ -152,6 +152,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0,
     borderBottomColor: "#ccc", // Add a border to separate header from content
     paddingTop: 20,
+    marginVertical: 20,
   },
   scrollViewContainer: {
     flex: 1,
@@ -168,7 +169,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    // marginBottom: 10,
+    marginBottom: 10,
   },
   separator: {
     borderBottomWidth: 1,
