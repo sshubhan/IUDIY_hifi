@@ -3,14 +3,21 @@ import {
   View,
   Text,
   Button,
+  Dimensions,
   StyleSheet,
   Image,
   TouchableOpacity,
 } from "react-native";
+import { LinearGradient } from "expo-linear-gradient"; // Import from expo-linear-gradient
+
+const { width: windowWidth, height: windowHeight } = Dimensions.get("window");
 
 const LoginScreen = ({ navigation }) => {
   return (
-    <View style={styles.container}>
+    <LinearGradient
+      colors={["#DCD0FF", "#FFFFFF"]} // You can adjust the gradient colors as needed
+      style={styles.container}
+    >
       <View style={styles.header}>
         <Image style={styles.logo} source={require("../IUDIY_hifi/logo.png")} />
       </View>
@@ -31,7 +38,7 @@ const LoginScreen = ({ navigation }) => {
       >
         <Text style={styles.buttonText}>Log In</Text>
       </TouchableOpacity>
-    </View>
+    </LinearGradient>
   );
 };
 
@@ -65,8 +72,8 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   logo: {
-    width: 400,
-    height: 150,
+    width: windowWidth * 0.87,
+    height: windowHeight * 0.17,
     marginRight: 15,
     borderRadius: 5,
   },

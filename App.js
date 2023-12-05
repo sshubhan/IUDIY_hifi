@@ -1,50 +1,11 @@
-// import React from "react";
-// import { NavigationContainer } from "@react-navigation/native";
-// import { createNativeStackNavigator } from "@react-navigation/native-stack";
-// import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-// import LoginScreen from "./LoginScreen";
-// import HomeScreen from "./HomeScreen";
-// import SymptomCheckScreen from "./SymptomCheckScreen";
-// import ConfirmationScreen from "./ConfirmationScreen";
-
-// const Stack = createNativeStackNavigator();
-// const Tab = createBottomTabNavigator();
-
-// function HomeTabs() {
-//   return (
-//     <Tab.Navigator>
-//       <Tab.Screen name="Home" component={HomeScreen} />
-//       {/* Add more tabs as needed */}
-//     </Tab.Navigator>
-//   );
-// }
-
-// export default function App() {
-//   return (
-//     <NavigationContainer>
-//       <Stack.Navigator>
-//         <Stack.Screen
-//           name="Login"
-//           component={LoginScreen}
-//           options={{ headerShown: false }}
-//         />
-//         <Stack.Screen
-//           name="HomeTabs"
-//           component={HomeTabs}
-//           options={{ headerShown: false }}
-//         />
-//         <Stack.Screen name="Symptom Check" component={SymptomCheckScreen} />
-//         <Stack.Screen name="Confirmation" component={ConfirmationScreen} />
-//       </Stack.Navigator>
-//     </NavigationContainer>
-//   );
-// }
-
-import React from "react";
+import React, { useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
+import { AppLoading } from "expo";
+import * as Font from "expo-font";
+// import "@fontsource/inter";
 
 // Import your screens
 import LoginScreen from "./LoginScreen";
@@ -58,6 +19,12 @@ import NewPrescriptionConfirmationScreen from "./NewPrescriptionConfirmationScre
 import CurrentRecommendationScreen from "./CurrentRecommendationScreen";
 import PharmacyMapScreen from "./PharmacyMapScreen";
 import PharmacyDetailScreen from "./PharmacyDetailScreen";
+
+// import { useCallback } from "react";
+// import { useFonts } from "expo-font";
+// import * as SplashScreen from "expo-splash-screen";
+
+// SplashScreen.preventAutoHideAsync();
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -88,7 +55,11 @@ function HomeTabs() {
         component={HomeScreen}
         options={{ headerShown: false }}
       />
-      <Tab.Screen name="Symptom Log" component={SymptomCheckScreen} />
+      <Tab.Screen
+        name="Symptom Log"
+        component={SymptomCheckScreen}
+        options={{ headerShown: false }}
+      />
       <Tab.Screen name="Prescriptions" component={PrescriptionsScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
@@ -96,6 +67,43 @@ function HomeTabs() {
 }
 
 export default function App() {
+  // const [fontsLoaded] = useFonts({
+  //   "Inter-Black": require("./assets/fonts/Inter-Black.ttf"),
+  // });
+
+  // const onLayoutRootView = useCallback(async () => {
+  //   if (fontsLoaded) {
+  //     await SplashScreen.hideAsync();
+  //   }
+  // }, [fontsLoaded]);
+
+  // if (!fontsLoaded) {
+  //   return null;
+  // }
+
+  // const [dataLoaded, setDataLoaded] = useState(false);
+
+  // const loadFonts = async () => {
+  //   try {
+  //     await Font.loadAsync({
+  //       "Inter-Black": require("./assets/fonts/Inter-Black.ttf"),
+  //     });
+
+  //     setDataLoaded(true);
+  //   } catch (error) {
+  //     console.error("Error loading fonts:", error);
+  //   }
+  // };
+
+  // if (!dataLoaded) {
+  //   return (
+  //     <AppLoading
+  //       startAsync={loadFonts}
+  //       onFinish={() => setDataLoaded(true)}
+  //       onError={console.warn} // Handle errors during font loading
+  //     />
+  //   );
+  // }
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -126,14 +134,13 @@ export default function App() {
         <Stack.Screen
           name="PharmacyMapScreen"
           component={PharmacyMapScreen}
-          options={{ title: 'Pharmacy Locations' }} // Customize your options
+          options={{ title: "Pharmacy Locations" }} // Customize your options
         />
         <Stack.Screen
           name="PharmacyDetailScreen"
           component={PharmacyDetailScreen}
-          options={{ title: 'Pharmacy Details' }} // Customize your options
+          options={{ title: "Pharmacy Details" }} // Customize your options
         />
-        {/* Add other screens as needed */}
       </Stack.Navigator>
     </NavigationContainer>
   );

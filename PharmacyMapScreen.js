@@ -6,15 +6,15 @@ import { Ionicons } from "@expo/vector-icons";
 const PharmacyMapScreen = ({ navigation }) => {
   const [region, setRegion] = useState({
     latitude: 37.3541,
-    longitude: -122.0000,
+    longitude: -122.0,
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421,
   });
 
   const pharmacies = [
-    { id: 1, title: "CVS Pharmacy", latitude: 37.354167, longitude: -122.010000 },
-    { id: 2, title: "CVS Pharmacy", latitude: 37.370000, longitude: -122.020000 },
-    { id: 3, title: "Target Pharmacy", latitude: 37.360000, longitude: -122.030000 },
+    { id: 1, title: "CVS Pharmacy", latitude: 37.354167, longitude: -122.01 },
+    { id: 2, title: "CVS Pharmacy", latitude: 37.37, longitude: -122.02 },
+    { id: 3, title: "Target Pharmacy", latitude: 37.36, longitude: -122.03 },
   ];
 
   const zoomIn = () => {
@@ -39,18 +39,23 @@ const PharmacyMapScreen = ({ navigation }) => {
         {pharmacies.map((pharmacy) => (
           <Marker
             key={pharmacy.id}
-            coordinate={{ latitude: pharmacy.latitude, longitude: pharmacy.longitude }}
+            coordinate={{
+              latitude: pharmacy.latitude,
+              longitude: pharmacy.longitude,
+            }}
             title={pharmacy.title}
-            onCalloutPress={() => navigation.navigate('PharmacyDetailScreen', { pharmacy })}
+            onCalloutPress={() =>
+              navigation.navigate("PharmacyDetailScreen", { pharmacy })
+            }
           >
             {/* Customized Marker Icon */}
             <Ionicons name="location" size={40} color="red" />
           </Marker>
         ))}
       </MapView>
-      <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
+      {/* <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
         <Ionicons name="arrow-back" size={25} color="black" />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       <View style={styles.zoomControls}>
         <TouchableOpacity style={styles.zoomButton} onPress={zoomIn}>
           <Text style={styles.zoomText}>+</Text>
@@ -71,27 +76,27 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
   },
   backButton: {
-    position: 'absolute',
+    position: "absolute",
     top: 40,
     left: 10,
     padding: 10,
     zIndex: 10,
   },
   zoomControls: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 20,
     right: 20,
-    backgroundColor: 'white',
+    backgroundColor: "white",
     borderRadius: 20,
   },
   zoomButton: {
     padding: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   zoomText: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
 });
 

@@ -1,3 +1,4 @@
+// export default HomeScreen;
 import React from "react";
 import {
   View,
@@ -7,11 +8,16 @@ import {
   Dimensions,
   Image,
 } from "react-native";
+import { LinearGradient } from "expo-linear-gradient"; // Import from expo-linear-gradient
+
 const { width: windowWidth, height: windowHeight } = Dimensions.get("window");
 
 const HomeScreen = ({ navigation }) => {
   return (
-    <View style={styles.container}>
+    <LinearGradient
+      colors={["#DCD0FF", "#FFFFFF"]} // You can adjust the gradient colors as needed
+      style={styles.container}
+    >
       <View style={styles.header}>
         <Image style={styles.logo} source={require("../IUDIY_hifi/logo.png")} />
       </View>
@@ -25,7 +31,7 @@ const HomeScreen = ({ navigation }) => {
       >
         <Text style={styles.buttonText}>Log Your Symptoms</Text>
       </TouchableOpacity>
-    </View>
+    </LinearGradient>
   );
 };
 
@@ -42,15 +48,16 @@ const styles = StyleSheet.create({
   },
   welcomeText: {
     fontSize: 30,
-    color: "black",
+    color: "black", // #6E0198
     margin: 10,
+    fontWeight: "bold",
   },
   square: {
     width: "85%",
     // height: "80%",
     aspectRatio: 1,
     borderRadius: 170, // Adjust the borderRadius for a rounded square
-    backgroundColor: "purple",
+    backgroundColor: "#9d6bcf", // Red-purple: #900C3F, Green: #009473, Purple: #6E0198
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 20,
@@ -60,6 +67,8 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     textAlign: "center",
+    // fontFamily: "sans-serif",
+    fontFamily: "Inter",
   },
   logButton: {
     backgroundColor: "#009473",
@@ -78,8 +87,8 @@ const styles = StyleSheet.create({
     margin: 15,
   },
   logo: {
-    width: 400,
-    height: 150,
+    width: windowWidth * 0.87,
+    height: windowHeight * 0.17,
     marginRight: 15,
     borderRadius: 5,
   },
