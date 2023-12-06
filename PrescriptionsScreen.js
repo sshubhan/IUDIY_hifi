@@ -146,7 +146,7 @@ const PrescriptionsScreen = ({ navigation }) => {
           {/* Button to get your current recommendation */}
           <TouchableOpacity
             style={styles.button}
-            onPress={() => navigation.navigate("CurrentRecommendationScreen")}
+            onPress={() => navigation.navigate("CurrentRecommendation")}
           >
             <Text style={styles.buttonText}>Current Prescription</Text>
           </TouchableOpacity>
@@ -180,6 +180,7 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 18,
     textAlign: "center",
+    fontFamily: "Inter-Regular",
   },
   headerContainer: {
     flexDirection: "row",
