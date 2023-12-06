@@ -7,7 +7,7 @@ import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 
 // Import the PrescriptionProvider
-import { PrescriptionProvider } from "./PrescriptionContext"; // Adjust this path as needed
+import { PrescriptionProvider } from "./PrescriptionContext";
 
 // Import your screens
 import LoginScreen from "./LoginScreen";
@@ -56,6 +56,43 @@ function SymptomLogStack() {
   );
 }
 
+function PrescriptionStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="PrescriptionsScreen"
+        component={PrescriptionsScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="RecommendationPreferences"
+        component={RecommendationPreferencesScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="NewPrescriptionConfirmation"
+        component={NewPrescriptionConfirmationScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="CurrentRecommendation"
+        component={CurrentRecommendationScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="PharmacyMapScreen"
+        component={PharmacyMapScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="PharmacyDetailScreen"
+        component={PharmacyDetailScreen}
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
+  );
+}
+
 function HomeTabs() {
   const symptomLogStackName = SymptomLogStack();
   return (
@@ -96,7 +133,15 @@ function HomeTabs() {
       />
       <Tab.Screen
         name="Prescriptions"
-        component={PrescriptionsScreen}
+        component={PrescriptionStack}
+        listeners={({ navigation }) => ({
+          tabPress: (e) => {
+            e.preventDefault();
+            navigation.navigate("Prescriptions", {
+              screen: "PrescriptionsScreen",
+            });
+          },
+        })}
         options={{ headerShown: false }}
       />
       <Tab.Screen
@@ -143,33 +188,6 @@ export default function App() {
             component={HomeTabs}
             options={{ headerShown: false }}
           />
-          <Stack.Screen name="Confirmation" component={ConfirmationScreen} />
-          <Stack.Screen
-            name="RecommendationPreferences"
-            component={RecommendationPreferencesScreen}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="NewPrescriptionConfirmation"
-            component={NewPrescriptionConfirmationScreen}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="CurrentRecommendation"
-            component={CurrentRecommendationScreen}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="PharmacyMapScreen"
-            component={PharmacyMapScreen}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="PharmacyDetailScreen"
-            component={PharmacyDetailScreen}
-            options={{ headerShown: false }}
-          />
-          {/* Add other screens as needed */}
         </Stack.Navigator>
       </NavigationContainer>
     </PrescriptionProvider>

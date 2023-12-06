@@ -32,7 +32,7 @@ const PrescriptionsScreen = ({ navigation }) => {
         {/* Button to get your current recommendation */}
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate("CurrentRecommendationScreen")}
+          onPress={() => navigation.navigate("CurrentRecommendation")}
         >
           <Text style={styles.buttonText}>Current Prescription</Text>
         </TouchableOpacity>

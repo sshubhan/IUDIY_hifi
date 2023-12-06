@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -83,6 +83,23 @@ const SymptomCheckScreen = ({ navigation }) => {
     "Nausea",
     "Bloating",
   ];
+
+  const handleRecordInserted = (payload) => {
+    console.log("INSERT", payload);
+    setSelectedSymptoms((oldData) => [...oldData, payload.new]);
+  };
+  useEffect(() => {
+    // Listen for changes to db
+    // From https://supabase.com/docs/guides/realtime/concepts#postgres-changes
+    supabase
+      .channel("schema-db-changes")
+      .on(
+        "postgres_changes",
+        { event: "INSERT", schema: "public", table: "posts" },
+        handleRecordInserted
+      )
+      .subscribe();
+  }, []);
 
   return (
     <View style={styles.container}>
