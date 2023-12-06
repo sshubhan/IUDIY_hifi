@@ -1,34 +1,30 @@
 // NewPrescriptionConfirmationScreen.js
 import React from "react";
-import { View, Text, Button, StyleSheet, TouchableOpacity } from "react-native";
-import { Ionicons } from "@expo/vector-icons"; // Make sure to have this import if you're using Expo
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import { usePrescription } from './PrescriptionContext'; // Make sure this path is correct
 
-const NewPrescriptionConfirmationScreen = ({ route, navigation }) => {
-  const { preferences } = route.params || {};
+const NewPrescriptionConfirmationScreen = ({ navigation }) => {
+  const { setPrescription } = usePrescription();
 
-  // Handle setting the new prescription here
   const handleSetPrescription = () => {
-    // Logic to set the new prescription...
-    navigation.navigate("HomeTabs");
+    setPrescription("Slynd");
+    navigation.navigate("HomeTabs"); // Navigate to HomeTabs which includes HomeScreen
   };
 
-  // Handle the cancel action
   const handleCancel = () => {
     navigation.navigate("HomeTabs");
   };
 
   return (
     <LinearGradient
-      colors={["#DCD0FF", "#FFFFFF"]} // You can adjust the gradient colors as needed
+      colors={["#DCD0FF", "#FFFFFF"]}
       style={[styles.container, styles.linearGradientStyle]}
     >
       <View style={styles.container}>
         <Text style={styles.confirmationText}>
           Your new recommendation based on your preferences:
         </Text>
-        {/* Display the preferences in a more detailed manner here */}
-        {/* For now, let's display a simple text */}
         <Text style={styles.detailText}>Preference details here...</Text>
         <TouchableOpacity
           style={styles.logButton}
@@ -61,12 +57,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 10,
   },
-  buttonContainer: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    marginTop: 20,
-    width: "100%",
-  },
   logButton: {
     backgroundColor: "#009473",
     width: 300,
@@ -80,7 +70,10 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 18,
   },
-  // Add other styles as necessary
+  linearGradientStyle: {
+    width: '100%',
+    height: '100%',
+  },
 });
 
 export default NewPrescriptionConfirmationScreen;

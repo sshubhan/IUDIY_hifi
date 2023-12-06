@@ -1,4 +1,4 @@
-// export default HomeScreen;
+// HomeScreen.js
 import React from "react";
 import {
   View,
@@ -8,14 +8,17 @@ import {
   Dimensions,
   Image,
 } from "react-native";
-import { LinearGradient } from "expo-linear-gradient"; // Import from expo-linear-gradient
+import { LinearGradient } from "expo-linear-gradient";
+import { usePrescription } from './PrescriptionContext'; // Make sure this path is correct
 
 const { width: windowWidth, height: windowHeight } = Dimensions.get("window");
 
 const HomeScreen = ({ navigation }) => {
+  const { currentPrescription } = usePrescription();
+
   return (
     <LinearGradient
-      colors={["#DCD0FF", "#FFFFFF"]} // You can adjust the gradient colors as needed
+      colors={["#DCD0FF", "#FFFFFF"]}
       style={styles.container}
     >
       <View style={styles.header}>
@@ -23,7 +26,7 @@ const HomeScreen = ({ navigation }) => {
       </View>
       <Text style={styles.welcomeText}>Welcome Alex!</Text>
       <View style={styles.circle}>
-        <Text style={styles.reminderText}>Take Yasmin in 34 minutes</Text>
+        <Text style={styles.reminderText}>Take {currentPrescription} in 34 minutes</Text>
       </View>
       <TouchableOpacity
         style={styles.logButton}

@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, Button, StyleSheet, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import { Ionicons } from "@expo/vector-icons";
 
 const ConfirmationScreen = ({ navigation }) => {
   return (
@@ -8,6 +9,12 @@ const ConfirmationScreen = ({ navigation }) => {
       colors={["#DCD0FF", "#FFFFFF"]}
       style={[styles.container, styles.linearGradientStyle]}
     >
+      <TouchableOpacity
+        onPress={() => navigation.goBack()}
+        style={styles.backButton}
+      >
+        <Ionicons name="arrow-back" size={25} color="black" />
+      </TouchableOpacity>
       <View style={styles.container}>
         <Text style={styles.confirmationText}>
           Your symptoms have been logged.
@@ -39,6 +46,12 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 16,
     fontFamily: "Inter-Light",
+    color: "white",
+  },
+  backButton: {
+    position: "absolute",
+    top: 65, // Adjust as needed
+    left: 25, // Adjust as needed
   },
   logButton: {
     backgroundColor: "#009473",
