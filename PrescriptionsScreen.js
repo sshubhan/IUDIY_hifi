@@ -178,6 +178,7 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 18,
     textAlign: "center",
+    fontFamily: "Inter-Regular",
   },
   headerContainer: {
     flexDirection: "row",

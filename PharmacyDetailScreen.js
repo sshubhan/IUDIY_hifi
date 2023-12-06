@@ -39,7 +39,9 @@ const PharmacyDetailScreen = ({ route, navigation }) => {
           <Text style={styles.detailText}>Name: {pharmacy.title}</Text>
           <Text style={styles.detailText}>Latitude: {pharmacy.latitude}</Text>
           <Text style={styles.detailText}>Longitude: {pharmacy.longitude}</Text>
-          <Text style={styles.detailText}>Slynd found in this location.</Text>
+          <Text style={styles.detailText}>
+            Yasmine and Slynd found in this location.
+          </Text>
         </View>
       </View>
     </LinearGradient>

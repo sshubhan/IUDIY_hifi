@@ -113,6 +113,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#cccccc",
     fontSize: 16,
+    fontFamily: "Inter-Regular",
     textAlignVertical: "top", // Aligns text to top for Android
   },
   button: {
@@ -125,6 +126,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "white",
+    fontFamily: "Inter-Regular",
     fontSize: 18,
   },
   headerContainer: {

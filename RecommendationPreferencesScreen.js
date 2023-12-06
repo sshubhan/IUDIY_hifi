@@ -102,11 +102,13 @@ const styles = StyleSheet.create({
     marginVertical: 12,
     borderWidth: 1,
     padding: 10,
+    fontFamily: "Inter-Regular",
   },
   label: {
     fontSize: 16,
     color: "black",
     paddingTop: 10,
+    fontFamily: "Inter-Regular",
   },
   logButton: {
     backgroundColor: "#009473",

@@ -14,13 +14,7 @@ import { useEffect, useState } from "react";
 import supabase from "./Supabase";
 import Log from "./Log";
 import { Ionicons } from "@expo/vector-icons";
-// import { ScrollView } from "react-native-gesture-handler";
 
-// const renderLog = ({ item }) => {
-//   return (
-//     <Log id={item.id} timestamp={item.timestamp} symptoms={item.symptoms} />
-//   );
-// };
 const renderLog = ({ item }) => {
   return (
     <Log
@@ -59,6 +53,21 @@ const PastSymptomsScreen = ({ navigation }) => {
       } catch (error) {
         console.error("Error fetching data:", error.message);
       }
+    };
+    const subscription = supabase
+      .from("Symptom Log")
+      .on("INSERT", (payload) => {
+        // Handle the new data (optional)
+        console.log("New Symptom Log Data:", payload.new);
+
+        // Trigger a refresh of your UI, or update your state
+        fetchData();
+      })
+      .subscribe();
+
+    // Clean up the subscription when the component unmounts
+    return () => {
+      subscription.unsubscribe();
     };
 
     fetchData();
