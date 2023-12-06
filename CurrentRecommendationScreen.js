@@ -1,20 +1,21 @@
-// CurrentRecommendationScreen.js
-import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import React from 'react';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { usePrescription } from './PrescriptionContext'; 
 
 const CurrentRecommendationScreen = ({ navigation }) => {
+  const { currentPrescription } = usePrescription();
+
   return (
     <View style={styles.container}>
-      {/* Close Button in the Header */}
       <TouchableOpacity
         style={styles.closeButton}
         onPress={() => navigation.navigate('HomeTabs')}>
         <Ionicons name="close-circle" size={30} color="black" />
       </TouchableOpacity>
       
-      <Text style={styles.titleText}>Current Recommendation</Text>
-      <Text style={styles.recommendationText}>Yasmin</Text>
+      <Text style={styles.titleText}>Current Prescription</Text>
+      <Text style={styles.recommendationText}>{currentPrescription}</Text>
       
       <TouchableOpacity
         style={styles.button}
@@ -24,8 +25,8 @@ const CurrentRecommendationScreen = ({ navigation }) => {
       
       <TouchableOpacity
         style={[styles.button, styles.cancelButton]}
-        onPress={() => navigation.navigate('HomeTabs')}>
-        <Text style={styles.buttonText}>Cancel</Text>
+        onPress={() => navigation.goBack()}>
+        <Text style={styles.buttonText}>Return Home</Text>
       </TouchableOpacity>
     </View>
   );
