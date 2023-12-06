@@ -21,6 +21,7 @@ import NewPrescriptionConfirmationScreen from "./NewPrescriptionConfirmationScre
 import CurrentRecommendationScreen from "./CurrentRecommendationScreen";
 import PharmacyMapScreen from "./PharmacyMapScreen";
 import PharmacyDetailScreen from "./PharmacyDetailScreen";
+import PastSymptomsScreen from "./PastSymptomsScreen";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -31,12 +32,12 @@ function SymptomLogStack() {
       <Stack.Screen
         name="SymptomCheck"
         component={SymptomCheckScreen}
-        options={{ headerShown: false, headerBackVisible: true }}
+        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="Confirmation"
         component={ConfirmationScreen}
-        options={{ headerShown: false, headerBackVisible: true }}
+        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="RecommendationPreferences"
@@ -46,7 +47,11 @@ function SymptomLogStack() {
         name="NewPrescriptionConfirmation"
         component={NewPrescriptionConfirmationScreen}
       />
-      {/* Add other screens related to the "Symptom Log" here */}
+      <Stack.Screen
+        name="PastSymptoms"
+        component={PastSymptomsScreen}
+        options={{ headerShown: false }}
+      />
     </Stack.Navigator>
   );
 }

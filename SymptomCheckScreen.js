@@ -10,17 +10,34 @@ import {
 } from "react-native";
 import CheckBox from "react-native-check-box";
 import { LinearGradient } from "expo-linear-gradient";
+import supabase from "./Supabase";
 
 const SymptomCheckScreen = ({ navigation }) => {
   const [selectedSymptoms, setSelectedSymptoms] = useState({});
   const [customSymptoms, setCustomSymptoms] = useState([]);
   const [customSymptom, setCustomSymptom] = useState("");
 
+  // const handleToggle = (symptom) => {
+  //   setSelectedSymptoms((prevState) => ({
+  //     ...prevState,
+  //     [symptom]: !prevState[symptom],
+  //   }));
+  // };
   const handleToggle = (symptom) => {
-    setSelectedSymptoms((prevState) => ({
-      ...prevState,
-      [symptom]: !prevState[symptom],
-    }));
+    setSelectedSymptoms((prevState) => {
+      const isCustomSymptom = customSymptoms.includes(symptom);
+      const updatedState = { ...prevState };
+      updatedState[symptom] = !prevState[symptom];
+
+      // if (isCustomSymptom) {
+      //   // If it's a custom symptom, toggle its state
+      //   updatedState[symptom] = !prevState[symptom];
+      // } else {
+      //   // If it's a default symptom, toggle its state or initialize it to true if it doesn't exist
+      //   updatedState[symptom] = !prevState[symptom];
+      // }
+      return updatedState;
+    });
   };
 
   const handleCustomSymptomChange = (text) => {
@@ -37,8 +54,23 @@ const SymptomCheckScreen = ({ navigation }) => {
     }
   };
 
-  const handleSubmit = () => {
-    // Your existing code here
+  const handleSubmit = async () => {
+    const selectedSymptomsArray = Object.keys(selectedSymptoms).filter(
+      (symptom) => selectedSymptoms[symptom]
+    );
+
+    // Insert a row into your Supabase table
+    const { data, error } = await supabase.from("Symptom Log").upsert([
+      {
+        symptoms: selectedSymptomsArray,
+      },
+    ]);
+
+    if (error) {
+      console.error("Error inserting row:", error.message);
+    } else {
+      console.log("Row inserted successfully:", data);
+    }
     navigation.navigate("Confirmation");
   };
 
@@ -55,16 +87,13 @@ const SymptomCheckScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <LinearGradient
-        colors={["#DCD0FF", "#FFFFFF"]} // You can adjust the gradient colors as needed
+        colors={["#DCD0FF", "#FFFFFF"]}
         style={[styles.container, styles.linearGradientStyle]}
       >
         <View style={styles.headerContainer}>
           <Text style={styles.header}>Select Your Symptoms</Text>
         </View>
         <ScrollView contentContainerStyle={styles.scrollViewContainer}>
-          {/* <Text style={styles.header}>Select Your Symptoms</Text> */}
-
-          {/* List of default symptoms */}
           {defaultSymptoms.map((symptom, index) => (
             <View key={index} style={styles.symptomContainer}>
               <View style={styles.symptomRow}>
@@ -82,7 +111,6 @@ const SymptomCheckScreen = ({ navigation }) => {
             </View>
           ))}
 
-          {/* List of custom symptoms */}
           {customSymptoms.map((symptom, index) => (
             <View
               key={index + defaultSymptoms.length}
@@ -120,13 +148,6 @@ const SymptomCheckScreen = ({ navigation }) => {
               </TouchableOpacity>
             </View>
           </View>
-
-          {/* <TouchableOpacity style={styles.logButton} onPress={handleSubmit}>
-          <Text style={styles.buttonText}>Submit</Text>
-        </TouchableOpacity> */}
-          {/* <View style={styles.buttonContainer}>
-          <Button title="Continue" onPress={handleSubmit} />
-        </View> */}
         </ScrollView>
         <TouchableOpacity style={styles.logButton} onPress={handleSubmit}>
           <Text style={styles.buttonText}>Submit</Text>
@@ -139,19 +160,17 @@ const SymptomCheckScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // marginBottom: 10,
   },
   linearGradientStyle: {
     padding: 20,
     flex: 1,
   },
   headerContainer: {
-    // backgroundColor: "white",
     alignItems: "center",
     justifyContent: "center",
     paddingVertical: 30,
     borderBottomWidth: 0,
-    borderBottomColor: "#ccc", // Add a border to separate header from content
+    borderBottomColor: "#ccc",
     paddingTop: 20,
     marginVertical: 20,
   },
@@ -160,7 +179,6 @@ const styles = StyleSheet.create({
   },
   header: {
     fontSize: 28,
-    // fontWeight: "bold",
     fontFamily: "Inter-Light",
   },
   symptomContainer: {
@@ -207,8 +225,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginLeft: "25%",
     fontFamily: "Inter-Light",
-
-    // marginBottom: 300,
   },
   buttonText: {
     color: "white",

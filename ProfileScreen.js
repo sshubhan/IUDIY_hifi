@@ -6,8 +6,11 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
+  Dimensions,
+  ScrollView,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+const { width: windowWidth, height: windowHeight } = Dimensions.get("window");
 
 const ProfileScreen = ({ navigation }) => {
   const [menstrualHistory, setMenstrualHistory] = useState("");
@@ -37,7 +40,7 @@ const ProfileScreen = ({ navigation }) => {
           <Text style={styles.header}>Alex C.</Text>
         </View>
         <Image
-          source={require("../IUDIY_hifi/profPic.png")} // Adjust the path as needed
+          source={require("./profPic.png")} // Adjust the path as needed
           style={styles.profilePic}
         />
         <Text style={styles.inputLabel}>
@@ -75,6 +78,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  scrollContainer: {
+    // flex: 1,
+  },
   linearGradientStyle: {
     width: "100%",
     height: "100%",
@@ -84,9 +90,11 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   profilePic: {
-    width: 200,
-    height: 200,
-    borderRadius: 100,
+    width: 0.5 * windowWidth,
+    height: 0.5 * windowWidth,
+    aspectRatio: 1,
+    // height: 200,
+    borderRadius: 0.25 * windowWidth,
   },
   inputLabel: {
     alignSelf: "flex-start",
