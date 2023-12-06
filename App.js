@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import { AppLoading } from "expo";
 import { Font } from "expo-font";
+// import { BlurView } from "expo-blur";
 // import "@fontsource/inter";
 
 // Import your screens
@@ -19,6 +20,7 @@ import NewPrescriptionConfirmationScreen from "./NewPrescriptionConfirmationScre
 import CurrentRecommendationScreen from "./CurrentRecommendationScreen";
 import PharmacyMapScreen from "./PharmacyMapScreen";
 import PharmacyDetailScreen from "./PharmacyDetailScreen";
+import PastSymptomsScreen from "./PastSymptomsScreen";
 
 import { useCallback } from "react";
 import { useFonts } from "expo-font";
@@ -35,12 +37,12 @@ function SymptomLogStack() {
       <Stack.Screen
         name="SymptomCheck"
         component={SymptomCheckScreen}
-        options={{ headerShown: false, headerBackVisible: true }}
+        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="Confirmation"
         component={ConfirmationScreen}
-        options={{ headerShown: false, headerBackVisible: true }}
+        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="RecommendationPreferences"
@@ -50,7 +52,11 @@ function SymptomLogStack() {
         name="NewPrescriptionConfirmation"
         component={NewPrescriptionConfirmationScreen}
       />
-      {/* Add other screens related to the "Symptom Log" here */}
+      <Stack.Screen
+        name="PastSymptoms"
+        component={PastSymptomsScreen}
+        options={{ headerShown: false }}
+      />
     </Stack.Navigator>
   );
 }
@@ -137,7 +143,20 @@ export default function App() {
           component={HomeTabs}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name="Confirmation" component={ConfirmationScreen} />
+        <Stack.Screen
+          name="Confirmation"
+          component={ConfirmationScreen}
+          options={{
+            headerTransparent: true,
+            // headerBackground: () => (
+            //   <BlurView
+            //     tint="light"
+            //     intensity={100}
+            //     style={StyleSheet.absoluteFill}
+            //   />
+            // ),
+          }}
+        />
         <Stack.Screen
           name="RecommendationPreferences"
           component={RecommendationPreferencesScreen}

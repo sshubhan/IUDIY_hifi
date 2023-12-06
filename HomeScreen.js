@@ -31,6 +31,14 @@ const HomeScreen = ({ navigation }) => {
       >
         <Text style={styles.buttonText}>Log Your Symptoms</Text>
       </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.logButton}
+        onPress={() =>
+          navigation.navigate("Symptom Log", { screen: "PastSymptoms" })
+        }
+      >
+        <Text style={styles.buttonText}>View Your Past Symptoms</Text>
+      </TouchableOpacity>
     </LinearGradient>
   );
 };
@@ -54,10 +62,10 @@ const styles = StyleSheet.create({
     fontFamily: "Inter-Light",
   },
   circle: {
-    width: "85%",
+    width: "75%",
     // height: "80%",
     aspectRatio: 1,
-    borderRadius: 170, // Adjust the borderRadius for a rounded square
+    borderRadius: 170,
     backgroundColor: "#9d6bcf", // Red-purple: #900C3F, Green: #009473, Purple: #6E0198
     alignItems: "center",
     justifyContent: "center",
@@ -78,6 +86,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     alignItems: "center",
     justifyContent: "center",
+    marginBottom: 25,
   },
   buttonText: {
     color: "white",

@@ -1,10 +1,20 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TextInput,
+  TouchableOpacity,
+  Dimensions,
+  ScrollView,
+} from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+const { width: windowWidth, height: windowHeight } = Dimensions.get("window");
 
 const ProfileScreen = ({ navigation }) => {
-  const [menstrualHistory, setMenstrualHistory] = useState('');
-  const [familyHealthHistory, setFamilyHealthHistory] = useState('');
+  const [menstrualHistory, setMenstrualHistory] = useState("");
+  const [familyHealthHistory, setFamilyHealthHistory] = useState("");
 
   const handleUpdateInformation = () => {
     // Implement what should happen when information is updated
@@ -19,32 +29,41 @@ const ProfileScreen = ({ navigation }) => {
       colors={["#DCD0FF", "#FFFFFF"]} // You can adjust the gradient colors as needed
       style={[styles.container, styles.linearGradientStyle]}
     >
-      <View style={styles.contentContainer}>
+      <ScrollView contentContainerStyle={styles.contentContainer}>
+        {/* <View style={styles.contentContainer}> */}
         <Text style={styles.nameText}>Alex C.</Text>
         <Image
-          source={require("../IUDIY_hifi/profPic.png")} // Adjust the path as needed
+          source={require("./profPic.png")} // Adjust the path as needed
           style={styles.profilePic}
         />
-        <Text style={styles.inputLabel}>Please describe your menstrual history:</Text>
-        <TextInput 
+        <Text style={styles.inputLabel}>
+          Please describe your menstrual history:
+        </Text>
+        <TextInput
           style={styles.input}
           onChangeText={setMenstrualHistory}
           value={menstrualHistory}
           multiline
           placeholder="Type here..."
         />
-        <Text style={styles.inputLabel}>Please describe relevant family health history:</Text>
-        <TextInput 
+        <Text style={styles.inputLabel}>
+          Please describe relevant family health history:
+        </Text>
+        <TextInput
           style={styles.input}
           onChangeText={setFamilyHealthHistory}
           value={familyHealthHistory}
           multiline
           placeholder="Type here..."
         />
-        <TouchableOpacity style={styles.button} onPress={handleUpdateInformation}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={handleUpdateInformation}
+        >
           <Text style={styles.buttonText}>Update Information</Text>
         </TouchableOpacity>
-      </View>
+        {/* </View> */}
+      </ScrollView>
     </LinearGradient>
   );
 };
@@ -53,9 +72,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  scrollContainer: {
+    // flex: 1,
+  },
   linearGradientStyle: {
-    width: '100%',
-    height: '100%',
+    width: "100%",
+    height: "100%",
   },
   contentContainer: {
     alignItems: "center",
@@ -66,32 +88,34 @@ const styles = StyleSheet.create({
     margin: 15,
   },
   profilePic: {
-    width: 200,
-    height: 200,
-    borderRadius: 100,
+    width: 0.5 * windowWidth,
+    height: 0.5 * windowWidth,
+    aspectRatio: 1,
+    // height: 200,
+    borderRadius: 0.25 * windowWidth,
   },
   inputLabel: {
-    alignSelf: 'flex-start',
+    alignSelf: "flex-start",
     marginLeft: 20,
     marginTop: 20,
     fontSize: 16,
   },
   input: {
-    width: '90%',
-    backgroundColor: 'white',
+    width: "90%",
+    backgroundColor: "white",
     padding: 10,
     marginVertical: 10,
     borderRadius: 5,
     borderWidth: 1,
-    borderColor: '#cccccc',
+    borderColor: "#cccccc",
     fontSize: 16,
-    textAlignVertical: 'top', // Aligns text to top for Android
+    textAlignVertical: "top", // Aligns text to top for Android
   },
   button: {
     backgroundColor: "#009473",
     padding: 15,
     borderRadius: 25,
-    width: '90%',
+    width: "90%",
     alignItems: "center",
     marginTop: 20,
   },
