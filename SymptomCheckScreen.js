@@ -266,7 +266,7 @@ import {
 import CheckBox from "react-native-check-box";
 import { LinearGradient } from "expo-linear-gradient";
 import supabase from "./Supabase";
-import { Ionicons } from "@expo/vector-icons";
+import Header from "./Header";
 
 const SymptomCheckScreen = ({ navigation }) => {
   const [selectedSymptoms, setSelectedSymptoms] = useState({});
@@ -331,16 +331,7 @@ const SymptomCheckScreen = ({ navigation }) => {
       style={styles.linearGradientStyle}
     >
       <SafeAreaView style={styles.container}>
-        <View style={styles.headerContainer}>
-          <TouchableOpacity
-            onPress={() => navigation.goBack()}
-            style={styles.backButton}
-          >
-            <Ionicons name="arrow-back" size={25} color="black" />
-          </TouchableOpacity>
-          <Text style={styles.header}>Select Your Symptoms</Text>
-        </View>
-
+        <Header title="Select Your Symptoms" navigation={navigation} />
         <ScrollView contentContainerStyle={styles.scrollViewContainer}>
           {defaultSymptoms.map((symptom, index) => (
             <View key={index} style={styles.symptomContainer}>

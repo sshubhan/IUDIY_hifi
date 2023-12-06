@@ -7,10 +7,10 @@ import {
   TextInput,
   TouchableOpacity,
   Dimensions,
-  ScrollView,
+  SafeAreaView,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { Ionicons } from "@expo/vector-icons";
+import Header from "./Header";
 
 const { width: windowWidth, height: windowHeight } = Dimensions.get("window");
 
@@ -27,51 +27,39 @@ const ProfileScreen = ({ navigation }) => {
   };
 
   return (
-    <LinearGradient
-      colors={["#DCD0FF", "#FFFFFF"]} // You can adjust the gradient colors as needed
-      style={[styles.container, styles.linearGradientStyle]}
-    >
-      <View style={styles.contentContainer}>
-        <View style={styles.headerContainer}>
+    <LinearGradient colors={["#DCD0FF", "#FFFFFF"]} style={styles.container}>
+      <SafeAreaView style={styles.safeArea}>
+        <Header title="Alex C." navigation={navigation} />
+        <View style={styles.contentContainer}>
+          <Image source={require("./profPic.png")} style={styles.profilePic} />
+          <Text style={styles.inputLabel}>
+            Please describe your menstrual history:
+          </Text>
+          <TextInput
+            style={styles.input}
+            onChangeText={setMenstrualHistory}
+            value={menstrualHistory}
+            multiline
+            placeholder="Type here..."
+          />
+          <Text style={styles.inputLabel}>
+            Please describe relevant family health history:
+          </Text>
+          <TextInput
+            style={styles.input}
+            onChangeText={setFamilyHealthHistory}
+            value={familyHealthHistory}
+            multiline
+            placeholder="Type here..."
+          />
           <TouchableOpacity
-            onPress={() => navigation.goBack()}
-            style={styles.backButton}
+            style={styles.button}
+            onPress={handleUpdateInformation}
           >
-            <Ionicons name="arrow-back" size={25} color="black" />
+            <Text style={styles.buttonText}>Update Information</Text>
           </TouchableOpacity>
-          <Text style={styles.header}>Alex C.</Text>
         </View>
-        <Image
-          source={require("./profPic.png")} // Adjust the path as needed
-          style={styles.profilePic}
-        />
-        <Text style={styles.inputLabel}>
-          Please describe your menstrual history:
-        </Text>
-        <TextInput
-          style={styles.input}
-          onChangeText={setMenstrualHistory}
-          value={menstrualHistory}
-          multiline
-          placeholder="Type here..."
-        />
-        <Text style={styles.inputLabel}>
-          Please describe relevant family health history:
-        </Text>
-        <TextInput
-          style={styles.input}
-          onChangeText={setFamilyHealthHistory}
-          value={familyHealthHistory}
-          multiline
-          placeholder="Type here..."
-        />
-        <TouchableOpacity
-          style={styles.button}
-          onPress={handleUpdateInformation}
-        >
-          <Text style={styles.buttonText}>Update Information</Text>
-        </TouchableOpacity>
-      </View>
+      </SafeAreaView>
     </LinearGradient>
   );
 };
@@ -80,8 +68,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  scrollContainer: {
-    // flex: 1,
+  safeArea: {
+    flex: 1,
   },
   linearGradientStyle: {
     width: "100%",
@@ -95,7 +83,6 @@ const styles = StyleSheet.create({
     width: 0.5 * windowWidth,
     height: 0.5 * windowWidth,
     aspectRatio: 1,
-    // height: 200,
     borderRadius: 0.25 * windowWidth,
   },
   inputLabel: {
@@ -126,25 +113,6 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "white",
     fontSize: 18,
-  },
-  headerContainer: {
-    alignItems: "center",
-    justifyContent: "center",
-    paddingVertical: 30,
-    borderBottomWidth: 0,
-    borderBottomColor: "#ccc",
-    paddingBottom: 15,
-  },
-  header: {
-    fontSize: 28,
-    fontFamily: "Inter-Light",
-    marginTop: 22,
-    justifyContent: "center",
-  },
-  backButton: {
-    position: "absolute",
-    top: 55, // Adjust as needed
-    left: -130, // Adjust as needed
   },
 });
 

@@ -111,12 +111,14 @@ import {
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons } from "@expo/vector-icons";
+import Header from "./Header";
 
 const PrescriptionsScreen = ({ navigation }) => {
   return (
     <LinearGradient colors={["#DCD0FF", "#FFFFFF"]} style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
-        <View style={styles.headerContainer}>
+        <Header title="Your Prescriptions" navigation={navigation} />
+        {/* <View style={styles.headerContainer}>
           <TouchableOpacity
             onPress={() => navigation.goBack()}
             style={styles.backButton}
@@ -124,7 +126,7 @@ const PrescriptionsScreen = ({ navigation }) => {
             <Ionicons name="arrow-back" size={25} color="black" />
           </TouchableOpacity>
           <Text style={styles.header}>Your Prescriptions</Text>
-        </View>
+        </View> */}
         <View style={styles.contentContainer}>
           <TouchableOpacity
             style={styles.button}
