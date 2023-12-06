@@ -13,6 +13,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { useEffect, useState } from "react";
 import supabase from "./Supabase";
 import Log from "./Log";
+import { Ionicons } from "@expo/vector-icons";
 // import { ScrollView } from "react-native-gesture-handler";
 
 // const renderLog = ({ item }) => {
@@ -67,6 +68,12 @@ const PastSymptomsScreen = ({ navigation }) => {
     <LinearGradient colors={["#DCD0FF", "#FFFFFF"]} style={styles.container}>
       <View style={styles.container}>
         <View style={styles.headerContainer}>
+          <TouchableOpacity
+            onPress={() => navigation.goBack()}
+            style={styles.backButton}
+          >
+            <Ionicons name="arrow-back" size={25} color="black" />
+          </TouchableOpacity>
           <Text style={styles.header}>Past Symptom Logs</Text>
         </View>
         <View style={styles.listContainer}>
@@ -109,6 +116,11 @@ const styles = StyleSheet.create({
   symptomText: {
     fontSize: 20,
     fontFamily: "Inter-Regular",
+  },
+  backButton: {
+    position: "absolute",
+    top: 25, // Adjust as needed
+    left: -40, // Adjust as needed
   },
 });
 
