@@ -35,24 +35,36 @@ const PharmacyMapScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <MapView style={styles.map} region={region}>
-        {pharmacies.map((pharmacy) => (
-          <Marker
-            key={pharmacy.id}
-            coordinate={{
-              latitude: pharmacy.latitude,
-              longitude: pharmacy.longitude,
-            }}
-            title={pharmacy.title}
-            onCalloutPress={() =>
-              navigation.navigate("PharmacyDetailScreen", { pharmacy })
-            }
-          >
-            {/* Customized Marker Icon */}
-            <Ionicons name="location" size={40} color="red" />
-          </Marker>
-        ))}
-      </MapView>
+      <View style={styles.headerContainer}>
+        <TouchableOpacity
+          onPress={() => navigation.goBack()}
+          style={styles.backButton}
+        >
+          <Ionicons name="arrow-back" size={25} color="black" />
+        </TouchableOpacity>
+        <Text style={styles.header}>Pharmacy Locations</Text>
+      </View>
+      <View style={styles.mapContainer}>
+        <MapView style={styles.map} region={region}>
+          {pharmacies.map((pharmacy) => (
+            <Marker
+              key={pharmacy.id}
+              coordinate={{
+                latitude: pharmacy.latitude,
+                longitude: pharmacy.longitude,
+              }}
+              title={pharmacy.title}
+              onCalloutPress={() =>
+                navigation.navigate("PharmacyDetailScreen", { pharmacy })
+              }
+            >
+              {/* Customized Marker Icon */}
+              <Ionicons name="location" size={40} color="red" />
+            </Marker>
+          ))}
+        </MapView>
+      </View>
+
       {/* <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
         <Ionicons name="arrow-back" size={25} color="black" />
       </TouchableOpacity> */}
@@ -70,10 +82,13 @@ const PharmacyMapScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    ...StyleSheet.absoluteFillObject,
+    flex: 1,
   },
   map: {
     ...StyleSheet.absoluteFillObject,
+  },
+  mapContainer: {
+    flex: 1,
   },
   backButton: {
     position: "absolute",
@@ -97,6 +112,27 @@ const styles = StyleSheet.create({
   zoomText: {
     fontSize: 20,
     fontWeight: "bold",
+  },
+  headerContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 30,
+    borderBottomWidth: 0,
+    borderBottomColor: "#ccc",
+    backgroundColor: "#DCD0FF",
+    paddingBottom: 30,
+  },
+  header: {
+    fontSize: 28,
+    fontFamily: "Inter-Light",
+    marginTop: 22,
+  },
+  backButton: {
+    position: "absolute",
+    top: 47,
+    left: 10,
+    padding: 10,
+    zIndex: 10,
   },
 });
 

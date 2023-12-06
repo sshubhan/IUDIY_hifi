@@ -1,10 +1,17 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TextInput,
+  TouchableOpacity,
+} from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
 const ProfileScreen = ({ navigation }) => {
-  const [menstrualHistory, setMenstrualHistory] = useState('');
-  const [familyHealthHistory, setFamilyHealthHistory] = useState('');
+  const [menstrualHistory, setMenstrualHistory] = useState("");
+  const [familyHealthHistory, setFamilyHealthHistory] = useState("");
 
   const handleUpdateInformation = () => {
     // Implement what should happen when information is updated
@@ -20,28 +27,43 @@ const ProfileScreen = ({ navigation }) => {
       style={[styles.container, styles.linearGradientStyle]}
     >
       <View style={styles.contentContainer}>
-        <Text style={styles.nameText}>Alex C.</Text>
+        <View style={styles.headerContainer}>
+          {/* <TouchableOpacity
+            onPress={() => navigation.goBack()}
+            style={styles.backButton}
+          >
+            <Ionicons name="arrow-back" size={25} color="black" />
+          </TouchableOpacity> */}
+          <Text style={styles.header}>Alex C.</Text>
+        </View>
         <Image
           source={require("../IUDIY_hifi/profPic.png")} // Adjust the path as needed
           style={styles.profilePic}
         />
-        <Text style={styles.inputLabel}>Please describe your menstrual history:</Text>
-        <TextInput 
+        <Text style={styles.inputLabel}>
+          Please describe your menstrual history:
+        </Text>
+        <TextInput
           style={styles.input}
           onChangeText={setMenstrualHistory}
           value={menstrualHistory}
           multiline
           placeholder="Type here..."
         />
-        <Text style={styles.inputLabel}>Please describe relevant family health history:</Text>
-        <TextInput 
+        <Text style={styles.inputLabel}>
+          Please describe relevant family health history:
+        </Text>
+        <TextInput
           style={styles.input}
           onChangeText={setFamilyHealthHistory}
           value={familyHealthHistory}
           multiline
           placeholder="Type here..."
         />
-        <TouchableOpacity style={styles.button} onPress={handleUpdateInformation}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={handleUpdateInformation}
+        >
           <Text style={styles.buttonText}>Update Information</Text>
         </TouchableOpacity>
       </View>
@@ -54,16 +76,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   linearGradientStyle: {
-    width: '100%',
-    height: '100%',
+    width: "100%",
+    height: "100%",
   },
   contentContainer: {
     alignItems: "center",
     padding: 20,
-  },
-  nameText: {
-    fontSize: 40,
-    margin: 15,
   },
   profilePic: {
     width: 200,
@@ -71,33 +89,47 @@ const styles = StyleSheet.create({
     borderRadius: 100,
   },
   inputLabel: {
-    alignSelf: 'flex-start',
+    alignSelf: "flex-start",
     marginLeft: 20,
     marginTop: 20,
     fontSize: 16,
   },
   input: {
-    width: '90%',
-    backgroundColor: 'white',
+    width: "90%",
+    backgroundColor: "white",
     padding: 10,
     marginVertical: 10,
     borderRadius: 5,
     borderWidth: 1,
-    borderColor: '#cccccc',
+    borderColor: "#cccccc",
     fontSize: 16,
-    textAlignVertical: 'top', // Aligns text to top for Android
+    textAlignVertical: "top", // Aligns text to top for Android
   },
   button: {
     backgroundColor: "#009473",
     padding: 15,
     borderRadius: 25,
-    width: '90%',
+    width: "90%",
     alignItems: "center",
     marginTop: 20,
   },
   buttonText: {
     color: "white",
     fontSize: 18,
+  },
+  headerContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 30,
+    borderBottomWidth: 0,
+    borderBottomColor: "#ccc",
+    paddingBottom: 15,
+  },
+  header: {
+    fontSize: 28,
+    fontFamily: "Inter-Light",
+    marginTop: 22,
+    justifyContent: "center",
   },
 });
 

@@ -9,9 +9,10 @@ const PrescriptionsScreen = ({ navigation }) => {
       colors={["#DCD0FF", "#FFFFFF"]} // You can adjust the gradient colors as needed
       style={[styles.container, styles.linearGradientStyle]}
     >
-      <View style={styles.container}>
-        <Text style={styles.title}>Your Prescriptions</Text>
-
+      <View style={styles.headerContainer}>
+        <Text style={styles.header}>Your Prescriptions</Text>
+      </View>
+      <View style={styles.contentContainer}>
         {/* Button to find prescription locations */}
         <TouchableOpacity
           style={styles.button}
@@ -47,6 +48,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 20,
   },
+  contentContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 20,
+  },
   title: {
     fontSize: 24,
     fontWeight: "bold",
@@ -64,6 +71,19 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 18,
     textAlign: "center", // Ensure the text is centered
+  },
+  headerContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 30,
+    borderBottomWidth: 0,
+    borderBottomColor: "#ccc",
+    paddingBottom: 30,
+  },
+  header: {
+    fontSize: 28,
+    fontFamily: "Inter-Light",
+    marginTop: 22,
   },
 });
 

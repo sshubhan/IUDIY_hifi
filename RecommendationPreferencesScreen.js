@@ -10,12 +10,13 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import { Ionicons } from "@expo/vector-icons";
 
 const RecommendationPreferencesScreen = ({ navigation }) => {
   const [preferences, setPreferences] = useState({
-    hasBeenOnContraceptives: "No",
+    hasBeenOnContraceptives: "",
     sideEffects: "",
-    lookingFor: "Hormonal Oral Contraceptives",
+    lookingFor: "",
     otherPreferences: "",
   });
 
@@ -28,6 +29,15 @@ const RecommendationPreferencesScreen = ({ navigation }) => {
       colors={["#DCD0FF", "#FFFFFF"]} // You can adjust the gradient colors as needed
       style={[styles.container, styles.linearGradientStyle]}
     >
+      <View style={styles.headerContainer}>
+        <TouchableOpacity
+          onPress={() => navigation.goBack()}
+          style={styles.backButton}
+        >
+          <Ionicons name="arrow-back" size={25} color="black" />
+        </TouchableOpacity>
+        <Text style={styles.header}>Get Recommendation</Text>
+      </View>
       <ScrollView contentContainerStyle={styles.container}>
         {/* Checkbox for previous contraceptive use */}
         <Text style={styles.label}>Have you been on any contraceptives?</Text>
@@ -51,6 +61,7 @@ const RecommendationPreferencesScreen = ({ navigation }) => {
         />
         {/* Selection for what they are looking for */}
         <Text style={styles.label}>What are you looking for?</Text>
+
         <TextInput
           style={styles.input}
           onChangeText={(text) =>
@@ -109,6 +120,27 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "white",
     fontSize: 18,
+  },
+  headerContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 30,
+    borderBottomWidth: 0,
+    borderBottomColor: "#ccc",
+    paddingBottom: 15,
+  },
+  header: {
+    fontSize: 28,
+    fontFamily: "Inter-Light",
+    marginTop: 22,
+    justifyContent: "center",
+  },
+  backButton: {
+    position: "absolute",
+    left: -7,
+    top: 47,
+
+    padding: 10,
   },
 });
 

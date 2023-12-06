@@ -94,7 +94,11 @@ function HomeTabs() {
         component={PrescriptionsScreen}
         options={{ headerShown: false }}
       />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
+      <Tab.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{ headerShown: false }}
+      />
     </Tab.Navigator>
   );
 }
@@ -138,10 +142,12 @@ export default function App() {
           <Stack.Screen
             name="RecommendationPreferences"
             component={RecommendationPreferencesScreen}
+            options={{ headerShown: false }}
           />
           <Stack.Screen
             name="NewPrescriptionConfirmation"
             component={NewPrescriptionConfirmationScreen}
+            options={{ headerShown: false }}
           />
           <Stack.Screen
             name="CurrentRecommendation"
@@ -151,12 +157,12 @@ export default function App() {
           <Stack.Screen
             name="PharmacyMapScreen"
             component={PharmacyMapScreen}
-            options={{ title: "Pharmacy Locations" }}
+            options={{ headerShown: false }}
           />
           <Stack.Screen
             name="PharmacyDetailScreen"
             component={PharmacyDetailScreen}
-            options={{ title: "Pharmacy Details" }}
+            options={{ headerShown: false }}
           />
           {/* Add other screens as needed */}
         </Stack.Navigator>

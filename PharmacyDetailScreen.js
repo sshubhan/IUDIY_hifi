@@ -21,13 +21,21 @@ const PharmacyDetailScreen = ({ route, navigation }) => {
       colors={["#DCD0FF", "#FFFFFF"]} // You can adjust the gradient colors as needed
       style={[styles.container, styles.linearGradientStyle]}
     >
+      <View style={styles.headerContainer}>
+        <TouchableOpacity
+          onPress={() => navigation.goBack()}
+          style={styles.backButton}
+        >
+          <Ionicons name="arrow-back" size={25} color="black" />
+        </TouchableOpacity>
+        <Text style={styles.header}>Pharmacy Information</Text>
+      </View>
       <View style={styles.container}>
         <Image
           style={styles.pin}
           source={require("../IUDIY_hifi/mapPin.png")}
         />
         <View style={styles.square}>
-          <Text style={styles.header}>PHARMACY INFORMATION</Text>
           <Text style={styles.detailText}>Name: {pharmacy.title}</Text>
           <Text style={styles.detailText}>Latitude: {pharmacy.latitude}</Text>
           <Text style={styles.detailText}>Longitude: {pharmacy.longitude}</Text>
@@ -49,7 +57,7 @@ const styles = StyleSheet.create({
     width: "85%",
     aspectRatio: 1,
     borderRadius: 70,
-    backgroundColor: "purple",
+    backgroundColor: "#9d6bcf",
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 20,
@@ -67,10 +75,8 @@ const styles = StyleSheet.create({
   },
   backButton: {
     position: "absolute",
-    top: 40, // Adjust as needed
-    left: 10, // Adjust as needed
-    padding: 10,
-    zIndex: 10, // Ensure the button is above other content
+    top: 65, // Adjust as needed
+    left: -35, // Adjust as needed
   },
   pin: {
     width: 300,
@@ -82,6 +88,21 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.6,
     shadowRadius: 5,
+  },
+  headerContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+    borderBottomWidth: 0,
+    borderBottomColor: "#ccc",
+    paddingBottom: 15,
+    paddingTop: 40,
+    flexDirection: "row",
+  },
+  header: {
+    fontSize: 28,
+    fontFamily: "Inter-Light",
+    marginTop: 22,
+    justifyContent: "center",
   },
   // Add other styles as needed
 });
