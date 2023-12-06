@@ -10,6 +10,8 @@ import {
   ScrollView,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import { Ionicons } from "@expo/vector-icons";
+
 const { width: windowWidth, height: windowHeight } = Dimensions.get("window");
 
 const ProfileScreen = ({ navigation }) => {
@@ -31,12 +33,12 @@ const ProfileScreen = ({ navigation }) => {
     >
       <View style={styles.contentContainer}>
         <View style={styles.headerContainer}>
-          {/* <TouchableOpacity
+          <TouchableOpacity
             onPress={() => navigation.goBack()}
             style={styles.backButton}
           >
             <Ionicons name="arrow-back" size={25} color="black" />
-          </TouchableOpacity> */}
+          </TouchableOpacity>
           <Text style={styles.header}>Alex C.</Text>
         </View>
         <Image
@@ -138,6 +140,11 @@ const styles = StyleSheet.create({
     fontFamily: "Inter-Light",
     marginTop: 22,
     justifyContent: "center",
+  },
+  backButton: {
+    position: "absolute",
+    top: 55, // Adjust as needed
+    left: -130, // Adjust as needed
   },
 });
 
