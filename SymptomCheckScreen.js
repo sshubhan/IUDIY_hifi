@@ -13,7 +13,7 @@ import {
 import CheckBox from "react-native-check-box";
 import { LinearGradient } from "expo-linear-gradient";
 import supabase from "./Supabase";
-import Header from "./Header";
+import NavbarHeader from "./navbarHeader";
 const { width: windowWidth, height: windowHeight } = Dimensions.get("window");
 
 const SymptomCheckScreen = ({ navigation }) => {
@@ -93,7 +93,7 @@ const SymptomCheckScreen = ({ navigation }) => {
   return (
     <LinearGradient colors={["#DCD0FF", "#FFFFFF"]} style={styles.container}>
       <SafeAreaView style={styles.container}>
-        <Header title="Select Your Symptoms" navigation={navigation} />
+        <NavbarHeader title="Select Your Symptoms" navigation={navigation} />
         <ScrollView contentContainerStyle={styles.scrollViewContainer}>
           {defaultSymptoms.map((symptom, index) => (
             <View key={index} style={styles.symptomContainer}>
