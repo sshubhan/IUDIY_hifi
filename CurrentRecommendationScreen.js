@@ -22,7 +22,7 @@ const CurrentRecommendationScreen = ({ navigation }) => {
         <View style={styles.contentContainer}>
           <View style={styles.introContainer}>
             <Text style={styles.introText}>
-              Your current prescription recommendation is
+              Your current prescription recommendation:
             </Text>
           </View>
           <View style={styles.currentPrescription}>
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   introText: {
-    fontSize: 18,
+    fontSize: 20,
     fontFamily: "Inter-Regular",
     textAlign: "center",
   },
@@ -93,6 +93,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "white",
     fontSize: 16,
+    fontFamily: "Inter-Regular",
   },
   buttonContainer: {
     width: "80%",

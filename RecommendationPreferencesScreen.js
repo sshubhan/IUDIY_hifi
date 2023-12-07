@@ -23,8 +23,6 @@ const RecommendationPreferencesScreen = ({ navigation }) => {
   });
 
   const handleSubmit = () => {
-    console.log("Before navigation");
-
     navigation.navigate("NewPrescriptionConfirmation");
   };
 
@@ -104,7 +102,7 @@ const styles = StyleSheet.create({
   },
   logButton: {
     backgroundColor: "#009473",
-    width: 300,
+    width: "80%",
     height: 50,
     borderRadius: 25,
     alignItems: "center",

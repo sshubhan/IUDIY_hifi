@@ -33,22 +33,29 @@ const NewPrescriptionConfirmationScreen = ({ navigation }) => {
     >
       <SafeAreaView style={styles.container}>
         <Header title="New Recommendation" navigation={navigation} />
-        <View style={styles.container}>
-          <Text style={styles.confirmationText}>
-            Your new recommendation based on your preferences:
-          </Text>
-          <Text style={styles.detailText}>Slynd</Text>
-          <TouchableOpacity
-            style={styles.logButton}
-            onPress={handleSetPrescription}
-          >
-            <Text style={styles.buttonText}>
-              Set as my current prescription
+        {/* <View style={styles.container}> */}
+        <View style={styles.contentContainer}>
+          <View style={styles.introContainer}>
+            <Text style={styles.introText}>
+              Your new recommendation based on your preferences:
             </Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.logButton} onPress={handleCancel}>
-            <Text style={styles.buttonText}>Cancel</Text>
-          </TouchableOpacity>
+          </View>
+          <View style={styles.newRecommendation}>
+            <Text style={styles.recommendationText}>Slynd</Text>
+          </View>
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity
+              style={styles.logButton}
+              onPress={handleSetPrescription}
+            >
+              <Text style={styles.buttonText}>
+                Set as my current prescription
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.logButton} onPress={handleCancel}>
+              <Text style={styles.buttonText}>Cancel</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </SafeAreaView>
     </LinearGradient>
@@ -58,15 +65,38 @@ const NewPrescriptionConfirmationScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 20,
+    // justifyContent: "center",
+    // alignItems: "center",
+    // padding: 20,
   },
   confirmationText: {
     fontSize: 20,
     marginBottom: 20,
     textAlign: "center",
     fontFamily: "Inter-Regular",
+  },
+  contentContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 20,
+    textAlign: "center",
+  },
+  introContainer: {
+    paddingBottom: 10,
+  },
+  recommendationText: {
+    fontSize: 26,
+    marginBottom: 30,
+    fontFamily: "Inter-Light",
+  },
+  introText: {
+    fontSize: 20,
+    fontFamily: "Inter-Regular",
+    textAlign: "center",
+  },
+  newRecommendation: {
+    alignItems: "center",
   },
   detailText: {
     fontSize: 24,
@@ -75,17 +105,21 @@ const styles = StyleSheet.create({
   },
   logButton: {
     backgroundColor: "#009473",
-    width: 300,
-    height: 50,
+    padding: 15,
     borderRadius: 25,
+    marginBottom: 15,
+    width: "100%",
     alignItems: "center",
-    justifyContent: "center",
-    margin: 20,
   },
   buttonText: {
     color: "white",
-    fontSize: 18,
+    fontSize: 16,
     fontFamily: "Inter-Regular",
+    textAlign: "center",
+  },
+  buttonContainer: {
+    width: "80%",
+    alignItems: "center",
   },
   linearGradientStyle: {
     width: "100%",
