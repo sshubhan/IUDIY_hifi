@@ -38,7 +38,7 @@ const CurrentRecommendationScreen = ({ navigation }) => {
 
             <TouchableOpacity
               style={[styles.button]}
-              onPress={() => navigation.goBack()}
+              onPress={() => navigation.navigate("PrescriptionsScreen")}
             >
               <Text style={styles.buttonText}>Back to Prescriptions</Text>
             </TouchableOpacity>
