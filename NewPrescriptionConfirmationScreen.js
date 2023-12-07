@@ -1,8 +1,15 @@
 // NewPrescriptionConfirmationScreen.js
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  SafeAreaView,
+} from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { usePrescription } from "./PrescriptionContext";
+import Header from "./Header";
 
 const NewPrescriptionConfirmationScreen = ({ navigation }) => {
   const { setPrescription } = usePrescription();
@@ -24,21 +31,26 @@ const NewPrescriptionConfirmationScreen = ({ navigation }) => {
       colors={["#DCD0FF", "#FFFFFF"]}
       style={[styles.container, styles.linearGradientStyle]}
     >
-      <View style={styles.container}>
-        <Text style={styles.confirmationText}>
-          Your new recommendation based on your preferences:
-        </Text>
-        <Text style={styles.detailText}>Slynd</Text>
-        <TouchableOpacity
-          style={styles.logButton}
-          onPress={handleSetPrescription}
-        >
-          <Text style={styles.buttonText}>Set as my current prescription</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.logButton} onPress={handleCancel}>
-          <Text style={styles.buttonText}>Cancel</Text>
-        </TouchableOpacity>
-      </View>
+      <SafeAreaView style={styles.container}>
+        <Header title="New Recommendation" navigation={navigation} />
+        <View style={styles.container}>
+          <Text style={styles.confirmationText}>
+            Your new recommendation based on your preferences:
+          </Text>
+          <Text style={styles.detailText}>Slynd</Text>
+          <TouchableOpacity
+            style={styles.logButton}
+            onPress={handleSetPrescription}
+          >
+            <Text style={styles.buttonText}>
+              Set as my current prescription
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.logButton} onPress={handleCancel}>
+            <Text style={styles.buttonText}>Cancel</Text>
+          </TouchableOpacity>
+        </View>
+      </SafeAreaView>
     </LinearGradient>
   );
 };
