@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     fontFamily: "Inter-Light",
     alignItems: "center",
+    textAlign: "center",
   },
   buttonText: {
     fontSize: 16,
