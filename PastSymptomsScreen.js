@@ -38,7 +38,7 @@ const PastSymptomsScreen = ({ navigation }) => {
         const sortedData = response.sort((a, b) => {
           return new Date(b.timestamp) - new Date(a.timestamp);
         });
-        setData(response);
+        // setData(response);
         const formattedData = response.map((item) => {
           const date = new Date(item.timestamp);
           const formattedDate = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
@@ -71,7 +71,7 @@ const PastSymptomsScreen = ({ navigation }) => {
       .channel("custom-update-channel")
       .on(
         "postgres_changes",
-        { event: "UPDATE", schema: "public", table: "Symptom Log" },
+        { event: "INSERT", schema: "public", table: "Symptom Log" },
         (payload) => {
           console.log("Change received!", payload);
           fetchData();
