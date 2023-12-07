@@ -1,51 +1,3 @@
-// PharmacyDetailScreen.js
-// import React from "react";
-// import {
-//   View,
-//   Text,
-//   StyleSheet,
-//   Image,
-//   TouchableOpacity,
-//   Dimensions,
-//   SafeAreaView,
-// } from "react-native";
-// import { Ionicons } from "@expo/vector-icons";
-// import { LinearGradient } from "expo-linear-gradient";
-// import Header from "./Header";
-
-// //const { width: windowWidth, height: windowHeight } = Dimensions.get("window");
-
-// const PharmacyDetailScreen = ({ route, navigation }) => {
-//   const { pharmacy } = route.params;
-
-//   return (
-//     <LinearGradient
-//       colors={["#DCD0FF", "#FFFFFF"]} // You can adjust the gradient colors as needed
-//       style={[styles.container, styles.linearGradientStyle]}
-//     >
-//       <SafeAreaView style={styles.container}>
-//         <Header title="Pharmacy Information" navigation={navigation} />
-//         <View style={styles.container}>
-//           <Image
-//             style={styles.pin}
-//             source={require("../IUDIY_hifi/mapPin.png")}
-//           />
-//           <View style={styles.square}>
-//             <Text style={styles.detailText}>Name: {pharmacy.title}</Text>
-//             <Text style={styles.detailText}>Latitude: {pharmacy.latitude}</Text>
-//             <Text style={styles.detailText}>
-//               Longitude: {pharmacy.longitude}
-//             </Text>
-//             <Text style={styles.detailText}>
-//               Yasmine and Slynd found in this location.
-//             </Text>
-//           </View>
-//         </View>
-//       </SafeAreaView>
-//     </LinearGradient>
-//   );
-// };
-
 import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, Image, SafeAreaView } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
@@ -55,7 +7,7 @@ const PharmacyDetailScreen = ({ route, navigation }) => {
   const { pharmacy } = route.params;
   const [address, setAddress] = useState("");
 
-  // Fetch address based on latitude and longitude
+  // Fetch address based on lat and long
   const fetchAddress = async () => {
     try {
       const response = await fetch(
@@ -80,7 +32,7 @@ const PharmacyDetailScreen = ({ route, navigation }) => {
 
   useEffect(() => {
     fetchAddress();
-  }, []); // Run the effect once when the component mounts
+  }, []);
 
   return (
     <LinearGradient
@@ -147,7 +99,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.6,
     shadowRadius: 5,
   },
-  // Add other styles as needed
 });
 
 export default PharmacyDetailScreen;

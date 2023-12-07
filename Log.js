@@ -3,26 +3,6 @@ import { Text, View, StyleSheet, Image, Pressable } from "react-native";
 import supabase from "./Supabase";
 
 const Log = ({ id, timestamp, symptoms }) => {
-  //   const [selectedSymptoms, setSymptoms] = useState([]);
-
-  //   useEffect(() => {
-  //     // Fetch symptoms from Supabase based on the item id
-  //     const fetchSymptoms = async () => {
-  //       const { data, error } = await supabase
-  //         .from("Symptom Log")
-  //         .select("symptoms");
-
-  //       if (error) {
-  //         console.error("Error fetching symptoms:", error.message);
-  //       } else {
-  //         const symptomsArray = data.map((item) => item.symptoms).flat();
-  //         setSymptoms(symptomsArray);
-  //       }
-  //     };
-
-  //     fetchSymptoms();
-  //   }, [id]);
-
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -74,8 +54,6 @@ const styles = StyleSheet.create({
     height: 32,
     marginRight: 4,
     borderRadius: "50%",
-    // borderTopRightRadius: '100%',
-    // borderBottomLeftRadius: '100%'
   },
   profile: {
     flexDirection: "row",
