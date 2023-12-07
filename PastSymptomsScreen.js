@@ -37,7 +37,7 @@ const PastSymptomsScreen = ({ navigation }) => {
         const sortedData = response.sort((a, b) => {
           return new Date(b.timestamp) - new Date(a.timestamp);
         });
-        setData(response);
+        // setData(response);
         const formattedData = response.map((item) => {
           const date = new Date(item.timestamp);
           const formattedDate = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
