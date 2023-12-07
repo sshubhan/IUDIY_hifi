@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 import supabase from "./Supabase";
 import Log from "./Log";
 import { Ionicons } from "@expo/vector-icons";
+import Header from "./Header";
 
 const renderLog = ({ item }) => {
   return (
@@ -97,16 +98,8 @@ const PastSymptomsScreen = ({ navigation }) => {
 
   return (
     <LinearGradient colors={["#DCD0FF", "#FFFFFF"]} style={styles.container}>
-      <View style={styles.container}>
-        <View style={styles.headerContainer}>
-          <TouchableOpacity
-            onPress={() => navigation.goBack()}
-            style={styles.backButton}
-          >
-            <Ionicons name="arrow-back" size={25} color="black" />
-          </TouchableOpacity>
-          <Text style={styles.header}>Past Symptom Logs</Text>
-        </View>
+      <SafeAreaView style={styles.container}>
+        <Header title="Past Symptom Logs" navigation={navigation} />
         <View style={styles.listContainer}>
           <FlatList
             data={data}
@@ -114,7 +107,7 @@ const PastSymptomsScreen = ({ navigation }) => {
             keyExtractor={(item) => item.id.toString()}
           />
         </View>
-      </View>
+      </SafeAreaView>
     </LinearGradient>
   );
 };
@@ -143,6 +136,7 @@ const styles = StyleSheet.create({
     width: "90%",
     alighItems: "center",
     paddingBottom: 50,
+    marginTop: 10,
   },
   symptomText: {
     fontSize: 20,

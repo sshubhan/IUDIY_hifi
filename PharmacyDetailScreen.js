@@ -7,9 +7,11 @@ import {
   Image,
   TouchableOpacity,
   Dimensions,
+  SafeAreaView,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
+import Header from "./Header";
 
 //const { width: windowWidth, height: windowHeight } = Dimensions.get("window");
 
@@ -21,29 +23,25 @@ const PharmacyDetailScreen = ({ route, navigation }) => {
       colors={["#DCD0FF", "#FFFFFF"]} // You can adjust the gradient colors as needed
       style={[styles.container, styles.linearGradientStyle]}
     >
-      <View style={styles.headerContainer}>
-        <TouchableOpacity
-          onPress={() => navigation.goBack()}
-          style={styles.backButton}
-        >
-          <Ionicons name="arrow-back" size={25} color="black" />
-        </TouchableOpacity>
-        <Text style={styles.header}>Pharmacy Information</Text>
-      </View>
-      <View style={styles.container}>
-        <Image
-          style={styles.pin}
-          source={require("../IUDIY_hifi/mapPin.png")}
-        />
-        <View style={styles.square}>
-          <Text style={styles.detailText}>Name: {pharmacy.title}</Text>
-          <Text style={styles.detailText}>Latitude: {pharmacy.latitude}</Text>
-          <Text style={styles.detailText}>Longitude: {pharmacy.longitude}</Text>
-          <Text style={styles.detailText}>
-            Yasmine and Slynd found in this location.
-          </Text>
+      <SafeAreaView style={styles.container}>
+        <Header title="Pharmacy Information" navigation={navigation} />
+        <View style={styles.container}>
+          <Image
+            style={styles.pin}
+            source={require("../IUDIY_hifi/mapPin.png")}
+          />
+          <View style={styles.square}>
+            <Text style={styles.detailText}>Name: {pharmacy.title}</Text>
+            <Text style={styles.detailText}>Latitude: {pharmacy.latitude}</Text>
+            <Text style={styles.detailText}>
+              Longitude: {pharmacy.longitude}
+            </Text>
+            <Text style={styles.detailText}>
+              Yasmine and Slynd found in this location.
+            </Text>
+          </View>
         </View>
-      </View>
+      </SafeAreaView>
     </LinearGradient>
   );
 };
@@ -63,6 +61,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 20,
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.6,
+    shadowRadius: 5,
   },
   header: {
     fontSize: 20,
@@ -71,14 +75,10 @@ const styles = StyleSheet.create({
     color: "white",
   },
   detailText: {
-    fontSize: 16,
+    fontSize: 18,
     marginBottom: 5,
+    margin: 5,
     color: "white",
-  },
-  backButton: {
-    position: "absolute",
-    top: 65, // Adjust as needed
-    left: -35, // Adjust as needed
   },
   pin: {
     width: 300,
