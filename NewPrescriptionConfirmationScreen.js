@@ -1,22 +1,15 @@
 // NewPrescriptionConfirmationScreen.js
 import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  SafeAreaView,
-} from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import Header from "./Header";
-import { usePrescription } from "./PrescriptionContext"; // Make sure this path is correct
+import { usePrescription } from './PrescriptionContext';
 
 const NewPrescriptionConfirmationScreen = ({ navigation }) => {
   const { setPrescription } = usePrescription();
 
   const handleSetPrescription = () => {
-    setPrescription("Slynd");
-    navigation.navigate("HomeTabs"); // Navigate to HomeTabs which includes HomeScreen
+    setPrescription("Slynd"); // Update prescription to 'Slynd'
+    navigation.navigate("CurrentRecommendation"); // Navigate to CurrentRecommendationScreen
   };
 
   const handleCancel = () => {
@@ -28,27 +21,22 @@ const NewPrescriptionConfirmationScreen = ({ navigation }) => {
       colors={["#DCD0FF", "#FFFFFF"]}
       style={[styles.container, styles.linearGradientStyle]}
     >
-      <SafeAreaView style={styles.container}>
-        <Header title="New Recommendation" />
-        <View style={styles.detailContainer}>
-          <Text style={styles.confirmationText}>
-            Your new recommendation based on your preferences:
-          </Text>
-          <Text style={styles.detailText}>Preference details here...</Text>
-          <TouchableOpacity
-            style={styles.logButton}
-            onPress={handleSetPrescription}
-          >
-            <Text style={styles.buttonText}>
-              Set as my current prescription
-            </Text>
-          </TouchableOpacity>
+      <View style={styles.container}>
+        <Text style={styles.confirmationText}>
+          Your new recommendation based on your preferences:
+        </Text>
+        <Text style={styles.detailText}>Slynd</Text> {/* Display "Slynd" as the recommendation */}
+        <TouchableOpacity
+          style={styles.logButton}
+          onPress={handleSetPrescription}
+        >
+          <Text style={styles.buttonText}>Set as my current prescription</Text>
+        </TouchableOpacity>
 
-          <TouchableOpacity style={styles.logButton} onPress={handleCancel}>
-            <Text style={styles.buttonText}>Cancel</Text>
-          </TouchableOpacity>
-        </View>
-      </SafeAreaView>
+        <TouchableOpacity style={styles.logButton} onPress={handleCancel}>
+          <Text style={styles.buttonText}>Cancel</Text>
+        </TouchableOpacity>
+      </View>
     </LinearGradient>
   );
 };
@@ -56,11 +44,9 @@ const NewPrescriptionConfirmationScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  detailContainer: {
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 25,
+    padding: 20,
   },
   confirmationText: {
     fontSize: 20,
@@ -85,9 +71,10 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   linearGradientStyle: {
-    width: "100%",
-    height: "100%",
+    width: '100%',
+    height: '100%',
   },
+  // ... other styles as necessary
 });
 
 export default NewPrescriptionConfirmationScreen;
