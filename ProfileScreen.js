@@ -10,7 +10,7 @@ import {
   SafeAreaView,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import Header from "./Header";
+import NavbarHeader from "./navbarHeader";
 
 const { width: windowWidth, height: windowHeight } = Dimensions.get("window");
 
@@ -29,7 +29,7 @@ const ProfileScreen = ({ navigation }) => {
   return (
     <LinearGradient colors={["#DCD0FF", "#FFFFFF"]} style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
-        <Header title="Alex C." navigation={navigation} />
+        <NavbarHeader title="Alex C." navigation={navigation} />
         <View style={styles.contentContainer}>
           <Image source={require("./profPic.png")} style={styles.profilePic} />
           <Text style={styles.inputLabel}>
