@@ -19,23 +19,13 @@ const Header = ({ title, navigation }) => {
       <Text style={styles.header}>{title}</Text>
 
       <View style={{ flex: 1 }} />
-      {/* <View style={styles.arrowContainer}>
-        <TouchableOpacity
-          onPress={() => navigation.goBack()}
-          style={styles.backButton}
-        >
-          <Ionicons name="arrow-back" size={25} color="black" />
-        </TouchableOpacity>
-      </View> */}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   headerContainer: {
-    // backgroundColor: "green",
     flexDirection: "row",
-    // justifyContent: "space-evenly",
     alignItems: "center",
     paddingVertical: 15,
     borderBottomWidth: 1,
@@ -44,18 +34,14 @@ const styles = StyleSheet.create({
     paddingBottom: 15,
   },
   header: {
-    // paddingLeft: 100,
     flex: 5,
     alignContent: "center",
     textAlign: "center",
-    // backgroundColor: "blue",
     fontSize: 24,
     fontFamily: "Inter-Light",
   },
   arrowContainer: {
     flex: 1,
-    // backgroundColor: "yellow",
-
     justifyContent: "flex-start",
   },
   backButton: {

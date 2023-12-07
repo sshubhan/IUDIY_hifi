@@ -2,22 +2,18 @@ import React from "react";
 import {
   View,
   Text,
-  Button,
   Dimensions,
   StyleSheet,
   Image,
   TouchableOpacity,
 } from "react-native";
-import { LinearGradient } from "expo-linear-gradient"; // Import from expo-linear-gradient
+import { LinearGradient } from "expo-linear-gradient";
 
 const { width: windowWidth, height: windowHeight } = Dimensions.get("window");
 
 const LoginScreen = ({ navigation }) => {
   return (
-    <LinearGradient
-      colors={["#DCD0FF", "#FFFFFF"]} // You can adjust the gradient colors as needed
-      style={styles.container}
-    >
+    <LinearGradient colors={["#DCD0FF", "#FFFFFF"]} style={styles.container}>
       <View style={styles.header}>
         <Image style={styles.logo} source={require("../IUDIY_hifi/logo.png")} />
       </View>
@@ -26,12 +22,6 @@ const LoginScreen = ({ navigation }) => {
         IUDIY will help you find a personalized contraceptive method and allow
         you to track your daily menstrual symptoms.
       </Text>
-      {/* <TouchableOpacity
-        style={styles.logButton}
-        onPress={() => navigation.navigate("Sign Up")}
-      >
-        <Text style={styles.buttonText}>Sign Up</Text>
-      </TouchableOpacity> */}
       <TouchableOpacity
         style={styles.logButton}
         onPress={() => navigation.navigate("HomeTabs")}

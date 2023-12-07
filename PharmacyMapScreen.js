@@ -64,9 +64,6 @@ const PharmacyMapScreen = ({ navigation }) => {
         </MapView>
       </View>
 
-      {/* <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
-        <Ionicons name="arrow-back" size={25} color="black" />
-      </TouchableOpacity> */}
       <View style={styles.zoomControls}>
         <TouchableOpacity style={styles.zoomButton} onPress={zoomIn}>
           <Text style={styles.zoomText}>+</Text>
@@ -90,13 +87,6 @@ const styles = StyleSheet.create({
   mapContainer: {
     flex: 1,
   },
-  backButton: {
-    position: "absolute",
-    top: 40,
-    left: 10,
-    padding: 10,
-    zIndex: 10,
-  },
   zoomControls: {
     position: "absolute",
     bottom: 20,
@@ -112,27 +102,6 @@ const styles = StyleSheet.create({
   zoomText: {
     fontSize: 20,
     fontWeight: "bold",
-  },
-  headerContainer: {
-    alignItems: "center",
-    justifyContent: "center",
-    paddingVertical: 30,
-    borderBottomWidth: 0,
-    borderBottomColor: "#ccc",
-    backgroundColor: "#DCD0FF",
-    paddingBottom: 30,
-  },
-  header: {
-    fontSize: 28,
-    fontFamily: "Inter-Light",
-    marginTop: 22,
-  },
-  backButton: {
-    position: "absolute",
-    top: 47,
-    left: 10,
-    padding: 10,
-    zIndex: 10,
   },
 });
 

@@ -7,7 +7,6 @@ import {
   SafeAreaView,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { Ionicons } from "@expo/vector-icons";
 import Header from "./Header";
 
 const ConfirmationScreen = ({ navigation }) => {
@@ -40,7 +39,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    // padding: 20,
   },
   linearGradientStyle: {
     padding: 20,
@@ -58,11 +56,6 @@ const styles = StyleSheet.create({
     fontFamily: "Inter-Light",
     color: "white",
   },
-  backButton: {
-    position: "absolute",
-    padding: 10,
-    zIndex: 1,
-  },
   logButton: {
     backgroundColor: "#009473",
     width: "100%",
@@ -72,12 +65,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     fontFamily: "Inter-Light",
     padding: 20,
-  },
-  headerContainer: {
-    flexDirection: "row",
-    justifyContent: "flex-start",
-    paddingVertical: 30,
-    paddingBottom: 30,
   },
 });
 

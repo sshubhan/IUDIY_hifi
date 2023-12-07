@@ -62,12 +62,10 @@ const styles = StyleSheet.create({
     fontSize: 30,
     color: "black", // #6E0198
     margin: 10,
-    // fontWeight: "bold",
     fontFamily: "Inter-Light",
   },
   circle: {
     width: "75%",
-    // height: "80%",
     aspectRatio: 1,
     borderRadius: 170,
     backgroundColor: "#9d6bcf", // Red-purple: #900C3F, Green: #009473, Purple: #6E0198
@@ -80,7 +78,6 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     textAlign: "center",
-    // fontFamily: "sans-serif",
     fontFamily: "Inter-Light",
   },
   logButton: {

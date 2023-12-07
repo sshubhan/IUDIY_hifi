@@ -1,14 +1,6 @@
 // PastSymptoms.js
 import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  SafeAreaView,
-  ScrollView,
-  FlatList,
-} from "react-native";
+import { View, StyleSheet, SafeAreaView, FlatList } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useEffect, useState } from "react";
 import supabase from "./Supabase";
@@ -58,14 +50,6 @@ const PastSymptomsScreen = ({ navigation }) => {
         console.error("Error fetching data:", error.message);
       }
     };
-    // const subscription = supabase
-    //   .from("Symptom Log")
-    //   .on("INSERT", (payload) => {
-    //     console.log("New Symptom Log Data:", payload.new);
-
-    //     fetchData();
-    //   })
-    //   .subscribe();
 
     const channels = supabase
       .channel("custom-update-channel")
@@ -78,17 +62,6 @@ const PastSymptomsScreen = ({ navigation }) => {
         }
       )
       .subscribe();
-    // const channel = supabase
-    //   .channel("schema-db-changes")
-    //   .on(
-    //     "postgres_changes",
-    //     {
-    //       event: "INSERT",
-    //       schema: "public",
-    //     },
-    //     (payload) => fetchData()
-    //   )
-    //   .subscribe();
     fetchData();
 
     return () => {
@@ -115,21 +88,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     height: "100%",
-    // justifyContent: "center",
     alignItems: "center",
-    // padding: 20,
-  },
-  headerContainer: {
-    alignItems: "center",
-    justifyContent: "center",
-    paddingVertical: 30,
-
-    paddingTop: 20,
-    marginVertical: 20,
-  },
-  header: {
-    fontSize: 28,
-    fontFamily: "Inter-Light",
   },
   listContainer: {
     flex: 1,
@@ -141,11 +100,6 @@ const styles = StyleSheet.create({
   symptomText: {
     fontSize: 20,
     fontFamily: "Inter-Regular",
-  },
-  backButton: {
-    position: "absolute",
-    top: 25, // Adjust as needed
-    left: -40, // Adjust as needed
   },
 });
 

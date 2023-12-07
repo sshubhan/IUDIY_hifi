@@ -11,7 +11,6 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { Ionicons } from "@expo/vector-icons";
 import Header from "./Header";
 
 const RecommendationPreferencesScreen = ({ navigation }) => {
@@ -28,7 +27,7 @@ const RecommendationPreferencesScreen = ({ navigation }) => {
 
   return (
     <LinearGradient
-      colors={["#DCD0FF", "#FFFFFF"]} // You can adjust the gradient colors as needed
+      colors={["#DCD0FF", "#FFFFFF"]}
       style={[styles.container, styles.linearGradientStyle]}
     >
       <SafeAreaView style={styles.container}>
@@ -112,27 +111,6 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "white",
     fontSize: 18,
-  },
-  headerContainer: {
-    alignItems: "center",
-    justifyContent: "center",
-    paddingVertical: 30,
-    borderBottomWidth: 0,
-    borderBottomColor: "#ccc",
-    paddingBottom: 15,
-  },
-  header: {
-    fontSize: 28,
-    fontFamily: "Inter-Light",
-    marginTop: 22,
-    justifyContent: "center",
-  },
-  backButton: {
-    position: "absolute",
-    left: -7,
-    top: 47,
-
-    padding: 10,
   },
 });
 
