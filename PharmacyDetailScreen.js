@@ -1,26 +1,90 @@
 // PharmacyDetailScreen.js
-import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  TouchableOpacity,
-  Dimensions,
-  SafeAreaView,
-} from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+// import React from "react";
+// import {
+//   View,
+//   Text,
+//   StyleSheet,
+//   Image,
+//   TouchableOpacity,
+//   Dimensions,
+//   SafeAreaView,
+// } from "react-native";
+// import { Ionicons } from "@expo/vector-icons";
+// import { LinearGradient } from "expo-linear-gradient";
+// import Header from "./Header";
+
+// //const { width: windowWidth, height: windowHeight } = Dimensions.get("window");
+
+// const PharmacyDetailScreen = ({ route, navigation }) => {
+//   const { pharmacy } = route.params;
+
+//   return (
+//     <LinearGradient
+//       colors={["#DCD0FF", "#FFFFFF"]} // You can adjust the gradient colors as needed
+//       style={[styles.container, styles.linearGradientStyle]}
+//     >
+//       <SafeAreaView style={styles.container}>
+//         <Header title="Pharmacy Information" navigation={navigation} />
+//         <View style={styles.container}>
+//           <Image
+//             style={styles.pin}
+//             source={require("../IUDIY_hifi/mapPin.png")}
+//           />
+//           <View style={styles.square}>
+//             <Text style={styles.detailText}>Name: {pharmacy.title}</Text>
+//             <Text style={styles.detailText}>Latitude: {pharmacy.latitude}</Text>
+//             <Text style={styles.detailText}>
+//               Longitude: {pharmacy.longitude}
+//             </Text>
+//             <Text style={styles.detailText}>
+//               Yasmine and Slynd found in this location.
+//             </Text>
+//           </View>
+//         </View>
+//       </SafeAreaView>
+//     </LinearGradient>
+//   );
+// };
+
+import React, { useState, useEffect } from "react";
+import { View, Text, StyleSheet, Image, SafeAreaView } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import Header from "./Header";
 
-//const { width: windowWidth, height: windowHeight } = Dimensions.get("window");
-
 const PharmacyDetailScreen = ({ route, navigation }) => {
   const { pharmacy } = route.params;
+  const [address, setAddress] = useState("");
+
+  // Fetch address based on latitude and longitude
+  const fetchAddress = async () => {
+    try {
+      const response = await fetch(
+        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${pharmacy.latitude},${pharmacy.longitude}&key=AIzaSyAcIjRQev-laMvhy-Auetg2cBunSWm17xk`
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      if (data.results.length > 0) {
+        setAddress(data.results[0].formatted_address);
+      } else {
+        console.warn("No results found for the given coordinates.");
+      }
+    } catch (error) {
+      console.error("Error fetching address:", error.message);
+    }
+  };
+
+  useEffect(() => {
+    fetchAddress();
+  }, []); // Run the effect once when the component mounts
 
   return (
     <LinearGradient
-      colors={["#DCD0FF", "#FFFFFF"]} // You can adjust the gradient colors as needed
+      colors={["#DCD0FF", "#FFFFFF"]}
       style={[styles.container, styles.linearGradientStyle]}
     >
       <SafeAreaView style={styles.container}>
@@ -32,10 +96,7 @@ const PharmacyDetailScreen = ({ route, navigation }) => {
           />
           <View style={styles.square}>
             <Text style={styles.detailText}>Name: {pharmacy.title}</Text>
-            <Text style={styles.detailText}>Latitude: {pharmacy.latitude}</Text>
-            <Text style={styles.detailText}>
-              Longitude: {pharmacy.longitude}
-            </Text>
+            <Text style={styles.detailText}>Address: {address}</Text>
             <Text style={styles.detailText}>
               Yasmine and Slynd found in this location.
             </Text>
@@ -68,17 +129,12 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.6,
     shadowRadius: 5,
   },
-  header: {
-    fontSize: 20,
-    fontWeight: "bold",
-    marginBottom: 20,
-    color: "white",
-  },
   detailText: {
     fontSize: 18,
     marginBottom: 5,
     margin: 5,
     color: "white",
+    textAlign: "center",
   },
   pin: {
     width: 300,
@@ -90,21 +146,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.6,
     shadowRadius: 5,
-  },
-  headerContainer: {
-    alignItems: "center",
-    justifyContent: "center",
-    borderBottomWidth: 0,
-    borderBottomColor: "#ccc",
-    paddingBottom: 15,
-    paddingTop: 40,
-    flexDirection: "row",
-  },
-  header: {
-    fontSize: 28,
-    fontFamily: "Inter-Light",
-    marginTop: 22,
-    justifyContent: "center",
   },
   // Add other styles as needed
 });
