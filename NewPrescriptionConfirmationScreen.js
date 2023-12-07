@@ -20,7 +20,10 @@ const NewPrescriptionConfirmationScreen = ({ navigation }) => {
   };
 
   const handleCancel = () => {
-    navigation.navigate("HomeScreen");
+    navigation.reset({
+      index: 0,
+      routes: [{ name: "HomeTabs" }],
+    });
   };
 
   return (
