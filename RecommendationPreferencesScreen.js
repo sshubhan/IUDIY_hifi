@@ -5,12 +5,14 @@ import {
   Text,
   Button,
   StyleSheet,
+  SafeAreaView,
   TextInput,
   ScrollView,
   TouchableOpacity,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons } from "@expo/vector-icons";
+import Header from "./Header";
 
 const RecommendationPreferencesScreen = ({ navigation }) => {
   const [preferences, setPreferences] = useState({
@@ -29,64 +31,58 @@ const RecommendationPreferencesScreen = ({ navigation }) => {
       colors={["#DCD0FF", "#FFFFFF"]} // You can adjust the gradient colors as needed
       style={[styles.container, styles.linearGradientStyle]}
     >
-      <View style={styles.headerContainer}>
-        <TouchableOpacity
-          onPress={() => navigation.goBack()}
-          style={styles.backButton}
-        >
-          <Ionicons name="arrow-back" size={25} color="black" />
-        </TouchableOpacity>
-        <Text style={styles.header}>Get Recommendation</Text>
-      </View>
-      <ScrollView contentContainerStyle={styles.container}>
-        {/* Checkbox for previous contraceptive use */}
-        <Text style={styles.label}>Have you been on any contraceptives?</Text>
-        <TextInput
-          style={styles.input}
-          onChangeText={(text) =>
-            setPreferences({ ...preferences, hasBeenOnContraceptives: text })
-          }
-          value={String(preferences.hasBeenOnContraceptives)}
-          placeholder="Yes or No"
-        />
-        {/* Text input for side effects */}
-        <Text style={styles.label}>If so, were there any side effects?</Text>
-        <TextInput
-          style={styles.input}
-          onChangeText={(text) =>
-            setPreferences({ ...preferences, sideEffects: text })
-          }
-          value={preferences.sideEffects}
-          placeholder="Type any side effects"
-        />
-        {/* Selection for what they are looking for */}
-        <Text style={styles.label}>What are you looking for?</Text>
+      <SafeAreaView style={styles.container}>
+        <Header title="Get Recommendation" navigation={navigation} />
+        <ScrollView contentContainerStyle={styles.container}>
+          {/* Checkbox for previous contraceptive use */}
+          <Text style={styles.label}>Have you been on any contraceptives?</Text>
+          <TextInput
+            style={styles.input}
+            onChangeText={(text) =>
+              setPreferences({ ...preferences, hasBeenOnContraceptives: text })
+            }
+            value={String(preferences.hasBeenOnContraceptives)}
+            placeholder="Yes or No"
+          />
+          {/* Text input for side effects */}
+          <Text style={styles.label}>If so, were there any side effects?</Text>
+          <TextInput
+            style={styles.input}
+            onChangeText={(text) =>
+              setPreferences({ ...preferences, sideEffects: text })
+            }
+            value={preferences.sideEffects}
+            placeholder="Type any side effects"
+          />
+          {/* Selection for what they are looking for */}
+          <Text style={styles.label}>What are you looking for?</Text>
 
-        <TextInput
-          style={styles.input}
-          onChangeText={(text) =>
-            setPreferences({ ...preferences, lookingFor: text })
-          }
-          value={preferences.lookingFor}
-          placeholder="Enter preferences"
-        />
-        {/* Text input for any other preferences */}
-        <Text style={styles.label}>Any other preferences?</Text>
-        <TextInput
-          style={styles.input}
-          onChangeText={(text) =>
-            setPreferences({ ...preferences, otherPreferences: text })
-          }
-          value={preferences.otherPreferences}
-          placeholder="Enter any other preferences"
-        />
+          <TextInput
+            style={styles.input}
+            onChangeText={(text) =>
+              setPreferences({ ...preferences, lookingFor: text })
+            }
+            value={preferences.lookingFor}
+            placeholder="Enter preferences"
+          />
+          {/* Text input for any other preferences */}
+          <Text style={styles.label}>Any other preferences?</Text>
+          <TextInput
+            style={styles.input}
+            onChangeText={(text) =>
+              setPreferences({ ...preferences, otherPreferences: text })
+            }
+            value={preferences.otherPreferences}
+            placeholder="Enter any other preferences"
+          />
 
-        {/* Submit button */}
-        <TouchableOpacity style={styles.logButton} onPress={handleSubmit}>
-          <Text style={styles.buttonText}>Get Recommendation</Text>
-        </TouchableOpacity>
-        {/* <Button title="Get Recommendation" onPress={handleSubmit} /> */}
-      </ScrollView>
+          {/* Submit button */}
+          <TouchableOpacity style={styles.logButton} onPress={handleSubmit}>
+            <Text style={styles.buttonText}>Get Recommendation</Text>
+          </TouchableOpacity>
+          {/* <Button title="Get Recommendation" onPress={handleSubmit} /> */}
+        </ScrollView>
+      </SafeAreaView>
     </LinearGradient>
   );
 };

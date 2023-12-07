@@ -9,6 +9,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { usePrescription } from "./PrescriptionContext";
 import { LinearGradient } from "expo-linear-gradient";
+import Header from "./Header";
 
 const CurrentRecommendationScreen = ({ navigation }) => {
   const { currentPrescription } = usePrescription();
@@ -16,16 +17,7 @@ const CurrentRecommendationScreen = ({ navigation }) => {
   return (
     <LinearGradient colors={["#DCD0FF", "#FFFFFF"]} style={[styles.container]}>
       <SafeAreaView style={styles.container}>
-        <View style={styles.headerContainer}>
-          <TouchableOpacity
-            onPress={() => navigation.goBack()}
-            style={styles.backButton}
-          >
-            <Ionicons name="arrow-back" size={25} color="black" />
-          </TouchableOpacity>
-
-          <Text style={styles.titleText}>Current Prescription</Text>
-        </View>
+        <Header title="Current Prescription" navigation={navigation} />
         {/* </View> */}
         <View style={styles.contentContainer}>
           <View style={styles.currentPrescription}>
@@ -43,7 +35,7 @@ const CurrentRecommendationScreen = ({ navigation }) => {
             style={[styles.button, styles.cancelButton]}
             onPress={() => navigation.goBack()}
           >
-            <Text style={styles.buttonText}>Return Home</Text>
+            <Text style={styles.buttonText}>Back to Prescriptions</Text>
           </TouchableOpacity>
         </View>
       </SafeAreaView>

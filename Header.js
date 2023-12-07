@@ -37,11 +37,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     // justifyContent: "space-evenly",
     alignItems: "center",
-    paddingVertical: 30,
+    paddingVertical: 15,
     borderBottomWidth: 1,
 
     borderBottomColor: "#ccc",
-    paddingBottom: 20,
+    paddingBottom: 15,
   },
   header: {
     // paddingLeft: 100,

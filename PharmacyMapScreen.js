@@ -1,7 +1,14 @@
 import React, { useState } from "react";
-import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
+import {
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  Text,
+  SafeAreaView,
+} from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import { Ionicons } from "@expo/vector-icons";
+import Header from "./Header";
 
 const PharmacyMapScreen = ({ navigation }) => {
   const [region, setRegion] = useState({
@@ -34,16 +41,8 @@ const PharmacyMapScreen = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.headerContainer}>
-        <TouchableOpacity
-          onPress={() => navigation.goBack()}
-          style={styles.backButton}
-        >
-          <Ionicons name="arrow-back" size={25} color="black" />
-        </TouchableOpacity>
-        <Text style={styles.header}>Pharmacy Locations</Text>
-      </View>
+    <SafeAreaView style={styles.container}>
+      <Header title="Pharmacy Locations" navigation={navigation} />
       <View style={styles.mapContainer}>
         <MapView style={styles.map} region={region}>
           {pharmacies.map((pharmacy) => (
@@ -76,13 +75,14 @@ const PharmacyMapScreen = ({ navigation }) => {
           <Text style={styles.zoomText}>-</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#DCD0FF",
   },
   map: {
     ...StyleSheet.absoluteFillObject,
