@@ -8,8 +8,8 @@ const NewPrescriptionConfirmationScreen = ({ navigation }) => {
   const { setPrescription } = usePrescription();
 
   const handleSetPrescription = () => {
-    setPrescription("Slynd"); // Update prescription to 'Slynd'
-    navigation.navigate("CurrentRecommendation"); // Navigate to CurrentRecommendationScreen
+    setPrescription("Slynd");
+    navigation.navigate("CurrentRecommendation");
   };
 
   const handleCancel = () => {
@@ -29,7 +29,6 @@ const NewPrescriptionConfirmationScreen = ({ navigation }) => {
           Your new recommendation based on your preferences:
         </Text>
         <Text style={styles.detailText}>Slynd</Text>
-        {/* Display "Slynd" as the recommendation */}
         <TouchableOpacity
           style={styles.logButton}
           onPress={handleSetPrescription}
@@ -55,10 +54,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginBottom: 20,
     textAlign: "center",
+    fontFamily: "Inter-Regular",
   },
   detailText: {
-    fontSize: 16,
+    fontSize: 24,
     marginBottom: 10,
+    fontFamily: "Inter-Light",
   },
   logButton: {
     backgroundColor: "#009473",
@@ -72,6 +73,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "white",
     fontSize: 18,
+    fontFamily: "Inter-Regular",
   },
   linearGradientStyle: {
     width: "100%",

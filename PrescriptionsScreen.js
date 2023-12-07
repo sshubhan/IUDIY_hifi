@@ -138,7 +138,7 @@ const PrescriptionsScreen = ({ navigation }) => {
             style={styles.button}
             onPress={() => navigation.navigate("CurrentRecommendation")}
           >
-            <Text style={styles.buttonText}>Current Prescription</Text>
+            <Text style={styles.buttonText}>Current Recommendation</Text>
           </TouchableOpacity>
         </View>
       </SafeAreaView>
