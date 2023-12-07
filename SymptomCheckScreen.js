@@ -8,11 +8,13 @@ import {
   TextInput,
   TouchableOpacity,
   SafeAreaView,
+  Dimensions,
 } from "react-native";
 import CheckBox from "react-native-check-box";
 import { LinearGradient } from "expo-linear-gradient";
 import supabase from "./Supabase";
 import Header from "./Header";
+const { width: windowWidth, height: windowHeight } = Dimensions.get("window");
 
 const SymptomCheckScreen = ({ navigation }) => {
   const [selectedSymptoms, setSelectedSymptoms] = useState({});
@@ -89,10 +91,7 @@ const SymptomCheckScreen = ({ navigation }) => {
   }, []);
 
   return (
-    <LinearGradient
-      colors={["#DCD0FF", "#FFFFFF"]}
-      style={styles.linearGradientStyle}
-    >
+    <LinearGradient colors={["#DCD0FF", "#FFFFFF"]} style={styles.container}>
       <SafeAreaView style={styles.container}>
         <Header title="Select Your Symptoms" navigation={navigation} />
         <ScrollView contentContainerStyle={styles.scrollViewContainer}>
@@ -150,9 +149,11 @@ const SymptomCheckScreen = ({ navigation }) => {
             </View>
           </View>
         </ScrollView>
-        <TouchableOpacity style={styles.logButton} onPress={handleSubmit}>
-          <Text style={styles.buttonText}>Submit</Text>
-        </TouchableOpacity>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity style={styles.logButton} onPress={handleSubmit}>
+            <Text style={styles.buttonText}>Submit</Text>
+          </TouchableOpacity>
+        </View>
       </SafeAreaView>
     </LinearGradient>
   );
@@ -161,6 +162,7 @@ const SymptomCheckScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    alignItems: "center",
   },
   linearGradientStyle: {
     flex: 1,
@@ -177,6 +179,8 @@ const styles = StyleSheet.create({
   },
   scrollViewContainer: {
     flexGrow: 1,
+    // justifyContent: "center",
+    width: windowWidth * 0.9,
   },
   header: {
     fontSize: 28,
@@ -196,7 +200,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: "#ccc",
     marginTop: 10,
-    marginBottom: 10,
+    // marginBottom: 10,
   },
   symptomText: {
     fontSize: 20,
@@ -208,7 +212,8 @@ const styles = StyleSheet.create({
     fontFamily: "Inter-Regular",
   },
   buttonContainer: {
-    marginTop: 20,
+    width: windowWidth * 0.5,
+    alignItems: "center",
   },
   addButton: {
     backgroundColor: "#009473",
@@ -226,13 +231,13 @@ const styles = StyleSheet.create({
   },
   logButton: {
     backgroundColor: "#009473",
-    width: "50%",
+    width: "100%",
     height: 50,
     borderRadius: 25,
     alignItems: "center",
     justifyContent: "center",
-    marginLeft: "25%",
     fontFamily: "Inter-Light",
+    margin: 20,
   },
   buttonText: {
     color: "white",

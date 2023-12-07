@@ -9,7 +9,7 @@ import {
   Image,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { usePrescription } from './PrescriptionContext'; // Make sure this path is correct
+import { usePrescription } from "./PrescriptionContext"; // Make sure this path is correct
 
 const { width: windowWidth, height: windowHeight } = Dimensions.get("window");
 
@@ -17,20 +17,21 @@ const HomeScreen = ({ navigation }) => {
   const { currentPrescription } = usePrescription();
 
   return (
-    <LinearGradient
-      colors={["#DCD0FF", "#FFFFFF"]}
-      style={styles.container}
-    >
+    <LinearGradient colors={["#DCD0FF", "#FFFFFF"]} style={styles.container}>
       <View style={styles.header}>
         <Image style={styles.logo} source={require("../IUDIY_hifi/logo.png")} />
       </View>
       <Text style={styles.welcomeText}>Welcome Alex!</Text>
       <View style={styles.circle}>
-        <Text style={styles.reminderText}>Take {currentPrescription} in 34 minutes</Text>
+        <Text style={styles.reminderText}>
+          Take {currentPrescription} in 34 minutes
+        </Text>
       </View>
       <TouchableOpacity
         style={styles.logButton}
-        onPress={() => navigation.navigate("Symptom Log")}
+        onPress={() =>
+          navigation.navigate("Symptom Log", { screen: "SymptomCheck" })
+        }
       >
         <Text style={styles.buttonText}>Log Your Symptoms</Text>
       </TouchableOpacity>

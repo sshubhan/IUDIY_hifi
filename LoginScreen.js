@@ -65,11 +65,13 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 10,
+    fontFamily: "Inter-Light",
   },
   description: {
     fontSize: 18,
     textAlign: "center",
     marginBottom: 20,
+    fontFamily: "Inter-Regular",
   },
   logo: {
     width: windowWidth * 0.87,
@@ -88,6 +90,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "white",
     fontSize: 16,
+    fontFamily: "Inter-Regular",
   },
 });
 

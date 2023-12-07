@@ -17,27 +17,45 @@ const Header = ({ title, navigation }) => {
       </View>
 
       <Text style={styles.header}>{title}</Text>
-      {/* Add an empty view to keep the arrow to the left */}
+
       <View style={{ flex: 1 }} />
+      {/* <View style={styles.arrowContainer}>
+        <TouchableOpacity
+          onPress={() => navigation.goBack()}
+          style={styles.backButton}
+        >
+          <Ionicons name="arrow-back" size={25} color="black" />
+        </TouchableOpacity>
+      </View> */}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   headerContainer: {
+    // backgroundColor: "green",
     flexDirection: "row",
-    justifyContent: "center",
+    // justifyContent: "space-evenly",
     alignItems: "center",
     paddingVertical: 30,
     borderBottomWidth: 1,
+
     borderBottomColor: "#ccc",
-    paddingBottom: 30,
+    paddingBottom: 20,
   },
   header: {
-    fontSize: 28,
+    // paddingLeft: 100,
+    flex: 5,
+    alignContent: "center",
+    textAlign: "center",
+    // backgroundColor: "blue",
+    fontSize: 24,
     fontFamily: "Inter-Light",
   },
   arrowContainer: {
+    flex: 1,
+    // backgroundColor: "yellow",
+
     justifyContent: "flex-start",
   },
   backButton: {

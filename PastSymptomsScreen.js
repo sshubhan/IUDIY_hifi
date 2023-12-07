@@ -34,6 +34,9 @@ const PastSymptomsScreen = ({ navigation }) => {
         const { data: response, error } = await supabase
           .from("Symptom Log")
           .select("id, timestamp, symptoms");
+        const sortedData = response.sort((a, b) => {
+          return new Date(b.timestamp) - new Date(a.timestamp);
+        });
         setData(response);
         const formattedData = response.map((item) => {
           const date = new Date(item.timestamp);
@@ -54,23 +57,42 @@ const PastSymptomsScreen = ({ navigation }) => {
         console.error("Error fetching data:", error.message);
       }
     };
-    const subscription = supabase
-      .from("Symptom Log")
-      .on("INSERT", (payload) => {
-        // Handle the new data (optional)
-        console.log("New Symptom Log Data:", payload.new);
+    // const subscription = supabase
+    //   .from("Symptom Log")
+    //   .on("INSERT", (payload) => {
+    //     console.log("New Symptom Log Data:", payload.new);
 
-        // Trigger a refresh of your UI, or update your state
-        fetchData();
-      })
+    //     fetchData();
+    //   })
+    //   .subscribe();
+
+    const channels = supabase
+      .channel("custom-update-channel")
+      .on(
+        "postgres_changes",
+        { event: "UPDATE", schema: "public", table: "Symptom Log" },
+        (payload) => {
+          console.log("Change received!", payload);
+          fetchData();
+        }
+      )
       .subscribe();
-
-    // Clean up the subscription when the component unmounts
-    return () => {
-      subscription.unsubscribe();
-    };
-
+    // const channel = supabase
+    //   .channel("schema-db-changes")
+    //   .on(
+    //     "postgres_changes",
+    //     {
+    //       event: "INSERT",
+    //       schema: "public",
+    //     },
+    //     (payload) => fetchData()
+    //   )
+    //   .subscribe();
     fetchData();
+
+    return () => {
+      channels.unsubscribe();
+    };
   }, []);
 
   return (
