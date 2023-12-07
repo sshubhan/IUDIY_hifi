@@ -2,7 +2,7 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { usePrescription } from './PrescriptionContext';
+import { usePrescription } from "./PrescriptionContext";
 
 const NewPrescriptionConfirmationScreen = ({ navigation }) => {
   const { setPrescription } = usePrescription();
@@ -25,14 +25,14 @@ const NewPrescriptionConfirmationScreen = ({ navigation }) => {
         <Text style={styles.confirmationText}>
           Your new recommendation based on your preferences:
         </Text>
-        <Text style={styles.detailText}>Slynd</Text> {/* Display "Slynd" as the recommendation */}
+        <Text style={styles.detailText}>Slynd</Text>
+        {/* Display "Slynd" as the recommendation */}
         <TouchableOpacity
           style={styles.logButton}
           onPress={handleSetPrescription}
         >
           <Text style={styles.buttonText}>Set as my current prescription</Text>
         </TouchableOpacity>
-
         <TouchableOpacity style={styles.logButton} onPress={handleCancel}>
           <Text style={styles.buttonText}>Cancel</Text>
         </TouchableOpacity>
@@ -71,10 +71,9 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   linearGradientStyle: {
-    width: '100%',
-    height: '100%',
+    width: "100%",
+    height: "100%",
   },
-  // ... other styles as necessary
 });
 
 export default NewPrescriptionConfirmationScreen;

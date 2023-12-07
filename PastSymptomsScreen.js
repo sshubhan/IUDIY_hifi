@@ -71,7 +71,7 @@ const PastSymptomsScreen = ({ navigation }) => {
       .channel("custom-update-channel")
       .on(
         "postgres_changes",
-        { event: "UPDATE", schema: "public", table: "Symptom Log" },
+        { event: "INSERT", schema: "public", table: "Symptom Log" },
         (payload) => {
           console.log("Change received!", payload);
           fetchData();
