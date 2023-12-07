@@ -13,7 +13,7 @@ const NewPrescriptionConfirmationScreen = ({ navigation }) => {
   };
 
   const handleCancel = () => {
-    navigation.navigate("HomeTabs");
+    navigation.navigate("HomeScreen");
   };
 
   return (
