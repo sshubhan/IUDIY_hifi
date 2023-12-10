@@ -9,7 +9,7 @@ import {
   Image,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { usePrescription } from "./PrescriptionContext"; // Make sure this path is correct
+import { usePrescription } from "./PrescriptionContext";
 
 const { width: windowWidth, height: windowHeight } = Dimensions.get("window");
 
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     width: "75%",
     aspectRatio: 1,
     borderRadius: 170,
-    backgroundColor: "#9d6bcf", // Red-purple: #900C3F, Green: #009473, Purple: #6E0198
+    backgroundColor: "#9d6bcf",
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 20,

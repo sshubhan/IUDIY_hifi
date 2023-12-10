@@ -7,7 +7,6 @@ const PharmacyDetailScreen = ({ route, navigation }) => {
   const { pharmacy } = route.params;
   const [address, setAddress] = useState("");
 
-  // Fetch address based on lat and long
   const fetchAddress = async () => {
     try {
       const response = await fetch(

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
-  Button,
   StyleSheet,
   ScrollView,
   TextInput,
@@ -78,8 +77,6 @@ const SymptomCheckScreen = ({ navigation }) => {
     setSelectedSymptoms((oldData) => [...oldData, payload.new]);
   };
   useEffect(() => {
-    // Listen for changes to db
-    // From https://supabase.com/docs/guides/realtime/concepts#postgres-changes
     supabase
       .channel("schema-db-changes")
       .on(
@@ -179,7 +176,6 @@ const styles = StyleSheet.create({
   },
   scrollViewContainer: {
     flexGrow: 1,
-    // justifyContent: "center",
     width: windowWidth * 0.9,
   },
   header: {
@@ -200,7 +196,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: "#ccc",
     marginTop: 10,
-    // marginBottom: 10,
   },
   symptomText: {
     fontSize: 20,

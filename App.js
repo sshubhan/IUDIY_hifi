@@ -9,7 +9,7 @@ import * as SplashScreen from "expo-splash-screen";
 // Import the PrescriptionProvider
 import { PrescriptionProvider } from "./PrescriptionContext";
 
-// Import your screens
+// Import screens
 import LoginScreen from "./LoginScreen";
 import HomeScreen from "./HomeScreen";
 import SymptomCheckScreen from "./SymptomCheckScreen";
@@ -94,7 +94,6 @@ function PrescriptionStack() {
 }
 
 function HomeTabs() {
-  const symptomLogStackName = SymptomLogStack();
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({

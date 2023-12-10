@@ -18,7 +18,6 @@ const CurrentRecommendationScreen = ({ navigation }) => {
     <LinearGradient colors={["#DCD0FF", "#FFFFFF"]} style={[styles.container]}>
       <SafeAreaView style={styles.container}>
         <Header title="Current Recommendation" navigation={navigation} />
-        {/* </View> */}
         <View style={styles.contentContainer}>
           <View style={styles.introContainer}>
             <Text style={styles.introText}>

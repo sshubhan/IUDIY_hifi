@@ -22,7 +22,6 @@ const PrescriptionsScreen = ({ navigation }) => {
             <Text style={styles.buttonText}>Where to Find Prescription</Text>
           </TouchableOpacity>
 
-          {/* Button to get a new recommendation */}
           <TouchableOpacity
             style={styles.button}
             onPress={() => navigation.navigate("RecommendationPreferences")}
@@ -30,7 +29,6 @@ const PrescriptionsScreen = ({ navigation }) => {
             <Text style={styles.buttonText}>Get a New Recommendation</Text>
           </TouchableOpacity>
 
-          {/* Button to get your current recommendation */}
           <TouchableOpacity
             style={styles.button}
             onPress={() => navigation.navigate("CurrentRecommendation")}
@@ -61,7 +59,7 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 25,
     marginBottom: 20,
-    width: "80%", // Adjust the width as needed
+    width: "80%",
   },
   buttonText: {
     color: "white",

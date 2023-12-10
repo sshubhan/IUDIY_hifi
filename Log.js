@@ -1,6 +1,4 @@
-import { useState, useEffect } from "react";
 import { Text, View, StyleSheet, Image, Pressable } from "react-native";
-import supabase from "./Supabase";
 
 const Log = ({ id, timestamp, symptoms }) => {
   return (

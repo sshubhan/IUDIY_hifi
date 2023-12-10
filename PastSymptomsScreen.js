@@ -5,7 +5,6 @@ import { LinearGradient } from "expo-linear-gradient";
 import { useEffect, useState } from "react";
 import supabase from "./Supabase";
 import Log from "./Log";
-import { Ionicons } from "@expo/vector-icons";
 import Header from "./Header";
 
 const renderLog = ({ item }) => {
@@ -30,12 +29,9 @@ const PastSymptomsScreen = ({ navigation }) => {
         const sortedData = response.sort((a, b) => {
           return new Date(b.timestamp) - new Date(a.timestamp);
         });
-        // setData(response);
         const formattedData = response.map((item) => {
           const date = new Date(item.timestamp);
           const formattedDate = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
-
-          // Format symptoms as a comma-separated list
           const formattedSymptoms = item.symptoms.join(", ");
 
           return {
